@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS holo_db;
+
+CREATE DATABASE holo_db;
