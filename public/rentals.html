@@ -26,10 +26,13 @@
         <a class="nav-link" href="./rentals.html">Rentals</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./login.html">Login</a>
+        <a class="nav-link" href="./login.html" id = "login">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./signup.html">Sign Up</a>
+        <a class="nav-link" href="./signup.html" id = "signup">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  href="./login.html" id="logout">Log out</a>
       </li>
 
     </ul>
@@ -37,33 +40,72 @@
 
 
 
-  <h5>Rentals: <button type="button" id = "addRental" class="btn btn-info">+ add new rental</button></h5>
+  <h5>Rentals: <button type="button" id="addRental" class="btn btn-info " data-bs-toggle="modal"
+      data-bs-target="#exampleModal">
+      + add new rental
+    </button> </h5>
+  <!-- Button trigger modal -->
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Item for Rental</h5>
+
+ 
+          
+        </div>
+        <div class="modal-body">
+          <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">Category</label>
+            <select class="form-select" id="inputGroupSelect01">
+              <option selected>None</option>
+              <option value="1">Snowboard</option>
+              <option value="2">Bike</option>
+              <option value="3">Surf</option>
+              <option value="3">Other</option>
+            </select>
+          </div>
+          <form class="form-floating">
+            <input class="form-control" id="title">
+            <label for="floatingInputValue">Title</label>
+          </form>
+          <form class="form-floating">
+            <input class="form-control" id="description">
+            <label for="floatingInputValue">Description</label>
+          </form>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">$</span>
+            </div>
+            <input type="text" class="form-control" id = "price" placeholder="0.00" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          <label for="startDate">From</label>
+          <input id="startDate" class="form-control" id = "dateFrom" type="date" />
+          <label for="startDate">To</label>
+          <input id="startDate" class="form-control" id = "dateTo" type="date" />
+          
+          <input class="form-control" type="file" id="formFileMultiple" multiple />
+   
+
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" id="addRental-btn" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  </div>
   
-  <!-- <h6>**must be logged in</h6>
-  <div class="col-auto">
-    <form class="form-floating">
-      <input class="form-control" id="title">
-      <label for="floatingInputValue">Title</label>
-    </form>
-    <form class="form-floating">
-      <input class="form-control" id="content">
-      <label for="floatingInputValue">Content</label>
-    </form>
-
-    <br>
-    <button type="button" class="btn btn-info" id="submit">Add new post</button>
-    <br>
-    <hr>
-    <h3>My Posts:</h3>
-    <h6>**might need to refresh page to display posts that were just added</h6>
-    <div id="userPosts"></div>
-  </div> -->
-
 
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"></script>
-  <script src="./js/dashboard.js"></script>
+  <script src="./js/rentals.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>

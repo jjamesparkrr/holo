@@ -1,3 +1,5 @@
+
+
 document.getElementById('login-btn').addEventListener('click', event => {
   event.preventDefault()
   let loggedUser = {
@@ -14,3 +16,10 @@ document.getElementById('login-btn').addEventListener('click', event => {
      window.location = 'rentals.html'
     })
 })
+
+function logout() {
+  localStorage.setItem('token', null)
+  window.location = 'signup.html'
+}
+
+document.getElementById("logout").addEventListener("click", logout);

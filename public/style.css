@@ -38,3 +38,31 @@ a:active {
   float: right;
 
 }
+
+#tos{
+  color: blue;
+}
+
+#usernameNotSet{
+  display: none;
+  color: red;
+
+}
+#usernameAlrExists{
+  display: none;
+  color: red;
+  
+}
+
+#errorTOS{
+  display: none;
+  color: red;
+}
+
+
+
+
+
+
+
+

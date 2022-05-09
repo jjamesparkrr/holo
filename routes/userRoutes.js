@@ -7,9 +7,9 @@ const jwt = require('jsonwebtoken')
 
 //REGISTERING ROUTE
 router.post('/register', (req, res)=> {
-  const { username } = req.body
-  User.register(new User({username}), req.body.password, err=> {
-    if(err) {console.log(err)}
+  const { username, email } = req.body
+  User.register(new User({username, email}), req.body.password, err=> {
+    if(err) {return res.json(500,err.message)}
     res.sendStatus(200)
   })
 })
@@ -22,6 +22,16 @@ router.post('/login', ({body},res)=> {
     if(err) {console.log(err)}
     res.json(user ? jwt.sign({id:user.id},process.env.SECRET):null)
   })
+})
+
+// get users
+router.get('/users',async (req, res) => {
+  try {
+    let users = await User.findAll({attributes: ['username', 'email']})
+    res.json(users)
+  } catch (error) {
+    res.json({ error })
+  }
 })
 
 //GET USER'S POSTS
