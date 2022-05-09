@@ -1,6 +1,5 @@
 document.getElementById('login-btn').addEventListener('click', event => {
   event.preventDefault()
-  console.log("hello")
   let loggedUser = {
     username: document.getElementById('username').value,
     password: document.getElementById('password').value
@@ -12,6 +11,6 @@ document.getElementById('login-btn').addEventListener('click', event => {
       //allows u to have access to authenticated browse 
       //will put this token in local storage
       localStorage.setItem('token', res.data)
-     window.location = 'index.html'
+     window.location = 'rentals.html'
     })
 })

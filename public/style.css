@@ -33,3 +33,8 @@ a:active {
   background-color: transparent;
   text-decoration: underline;
 }
+
+#addRental{
+  float: right;
+
+}

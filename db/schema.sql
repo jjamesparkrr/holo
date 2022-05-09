@@ -1,10 +1,3 @@
 DROP DATABASE IF EXISTS holo;
 
 CREATE DATABASE holo;
-
--- CREATE TABLE holo.user   
--- (
---     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
---     username VARCHAR(255) NOT NULL UNIQUE,
---     password VARCHAR(255) NOT NULL
--- );

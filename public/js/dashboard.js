@@ -71,7 +71,7 @@ document.addEventListener('click', event => {
 })
 
 function logout() {
-  localStorage.setItem('badge', null)
+  localStorage.setItem('token', null)
   window.location = 'signup.html'
 }
 
