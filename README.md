@@ -12,7 +12,23 @@ Terminal npm installations:
 
 npm i
 
-npm i express mysql2 sequelize dotenv bcrypt
+npm i axios 
+
+npm i dotenv
+
+npm i express
+
+npm i express-session
+
+npm i jsonwebtoken
+
+npm i passport-local-sequelize
+
+npm i passport
+
+npm i sequelize
+
+npm i session
 
 Extra steps:
 
