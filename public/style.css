@@ -46,23 +46,98 @@ a:active {
 #usernameNotSet{
   display: none;
   color: red;
+  font-style:oblique;
 
 }
 #usernameAlrExists{
   display: none;
   color: red;
+  font-style:oblique;
   
 }
 
 #errorTOS{
   display: none;
   color: red;
+  font-style:oblique;
+}
+#shortPassword{
+  display: none;
+  color: red;
+  font-style:oblique;
+}
+#invalidUserLength{
+  display: none;
+  color: red;
+  font-style:oblique;
+}
+#emailAlrExists{
+  display: none;
+  color: red;
+  font-style:oblique;
+}
+#emailNotSet{
+  display: none;
+  color: red;
+  font-style:oblique;
+}
+#emailNotValid{
+  display: none;
+  color: red;
+  font-style:oblique;
+}
+#accountCreated{
+  display: none;
+  color: green;
+  font-style:oblique;
+  font-weight: bold;
+  text-align: center;
+}
+#blankUser{
+  display: none;
+  color: red;
+  font-style:oblique;
+}
+#invalidLoginUser{
+  display: none;
+  color: red;
+  font-style:oblique;
+}
+#invalidLoginPw{
+  display: none;
+  color: red;
+  font-style:oblique;
+}
+#blankPw{
+  display: none;
+  color: red;
+  font-style:oblique;
+}
+#profile{
+  display: none;
+}
+#loggedOut{
+  display: none;
+  color: green;
+  font-style:oblique;
+  font-weight: bold;
+  text-align: center;
+}
+
+#oneCard:hover{
+   transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 }
 
 
 
 
 
+/* .row > div[class*='col-'] {
+ display: flex;
+} */
 
-
+.card {
+  margin-bottom: 40px;
+}
 

@@ -1,6 +1,18 @@
 
 // const axios = require('axios')
 
+function makeAllNoneExcept(thisOne) {
+  document.getElementById('emailNotValid').style.display = 'none';
+  document.getElementById('emailNotSet').style.display = 'none';
+  document.getElementById('emailAlrExists').style.display = 'none';
+  document.getElementById('invalidUserLength').style.display = 'none';
+  document.getElementById('usernameAlrExists').style.display = 'none';
+  document.getElementById('usernameNotSet').style.display = 'none';
+  document.getElementById('shortPassword').style.display = 'none';
+  document.getElementById('errorTOS').style.display = 'none';
+
+  document.getElementById(thisOne).style.display = 'inline';
+}
 
 
 document.getElementById('signup-btn').addEventListener('click', event => {
@@ -12,22 +24,17 @@ document.getElementById('signup-btn').addEventListener('click', event => {
   }
 
   if (newUser.password.length < 6){
-    // inline for password too short, must be greater than 6
+    makeAllNoneExcept('shortPassword');
   }
   else if (document.getElementById('checkTOS').checked == false){
-    document.getElementById('errorTOS').style.display = 'inline';
+    makeAllNoneExcept('errorTOS');
   }
-  else if (document.getElementById('checkTOS').checked == false){
-    document.getElementById('errorTOS').style.display = 'inline';
-  }
-  
-  axios.post('/user/register', newUser)
+  else{
+    axios.post('/user/register', newUser)
     .then(res => {
-      alert('Account succesfully registered!')
+      localStorage.setItem("accountSuccess",1);
       window.location = "login.html"
     })
-
-
     .catch(function (error) {
       if (error.response) {
 
@@ -35,22 +42,35 @@ document.getElementById('signup-btn').addEventListener('click', event => {
         // alert(error_message)
 
         let user_alr_exists_string = '"User already exists with'
-
+        console.log(error_message);
         if (error_message == '"Field username is not set"') {
-          document.getElementById('usernameNotSet').style.display = 'inline';
+          makeAllNoneExcept('usernameNotSet');
         }
         else if (error_message.slice(0, user_alr_exists_string.length) == user_alr_exists_string) {
-          document.getElementById('usernameNotSet').style.display = 'none';
-          document.getElementById('usernameAlrExists').style.display = 'inline';
+          makeAllNoneExcept('usernameAlrExists');
         }
-        else if (error_message == '"Field username is not set"') {
-          document.getElementById('usernameNotSet').style.display = 'inline';
+        else if (error_message.includes("wrong username length")) {
+          makeAllNoneExcept('invalidUserLength');
         }
+        else if (error_message.includes("email already exists")) {
+          makeAllNoneExcept('emailAlrExists');
+        }
+        else if (error_message.includes("email is empty")) {
+          makeAllNoneExcept('emailNotSet');
+        }
+        else if (error_message.includes("not a valid email format")) {
+          makeAllNoneExcept('emailNotValid');
+        }
+        
         
 
         // alert(JSON.stringify(error.response.data))
       }
     });
+    
+  }
+  
+  
 
 
 

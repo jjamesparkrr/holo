@@ -26,13 +26,16 @@
         <a class="nav-link" href="./rentals.html">Rentals</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./login.html" id = "login">Login</a>
+        <a class="nav-link" href="./login.html" id="login">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./signup.html" id = "signup">Sign Up</a>
+        <a class="nav-link" href="./signup.html" id="signup">Sign Up</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"  href="./login.html" id="logout">Log out</a>
+        <a class="nav-link" href="./profile.html" id="profile">My profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./login.html" id="logout">Log out</a>
       </li>
 
     </ul>
@@ -45,7 +48,12 @@
       + add new rental
     </button> </h5>
   <!-- Button trigger modal -->
+  <br>
+  <br>
+  <div id="rentals" class="container">
+    <div class="row" id="row" ></div>
 
+  </div>
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -54,8 +62,8 @@
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Item for Rental</h5>
 
- 
-          
+
+
         </div>
         <div class="modal-body">
           <div class="input-group mb-3">
@@ -80,27 +88,28 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">$</span>
             </div>
-            <input type="text" class="form-control" id = "price" placeholder="0.00" aria-label="Username" aria-describedby="basic-addon1">
+            <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="Username"
+              aria-describedby="basic-addon1">
           </div>
           <label for="startDate">From</label>
-          <input id="startDate" class="form-control" id = "dateFrom" type="date" />
+          <input id="startDate" class="form-control" id="dateFrom" type="date" />
           <label for="startDate">To</label>
-          <input id="startDate" class="form-control" id = "dateTo" type="date" />
-          
-          <input class="form-control" type="file" id="formFileMultiple" multiple />
-   
+          <input id="startDate" class="form-control" id="dateTo" type="date" />
 
-      </div>
+          <input class="form-control" type="file" id="formFileMultiple" multiple />
+
+
+        </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" id="addRental-btn" class="btn btn-primary">Submit</button>
+          <button type="button" id="addRental-btn" class="btn btn-primary"  data-bs-dismiss="modal">Submit</button>
         </div>
       </div>
-      
+
     </div>
   </div>
   </div>
-  
+
 
 
 

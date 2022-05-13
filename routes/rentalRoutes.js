@@ -47,7 +47,7 @@ router.post('/posts', passport.authenticate('jwt'), async (req, res) => {
       });
     res.json(newPost);
   } catch (err) {
-    res.json(err);
+    return res.json(500,err);
   }
 });
 

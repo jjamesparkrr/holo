@@ -6,43 +6,10 @@ if (localStorage.getItem('token') == "null"){
 else{
   document.getElementById('login').style.display = 'none';
   document.getElementById('signup').style.display = 'none';
+  document.getElementById('profile').style.display = 'block';
 }
 
-//getting the posts and display them
-// axios.get('/api/posts')
-//   .then(res => {
-//     console.log(res) //array of objects
-//     //want to put the posts on the page
-//     let posts = res.data
-//     posts.forEach(post => {
-//       document.getElementById('posts').innerHTML +=
-//         `
-//         <div class="card text-center bigcard">
-//           <div class="card-header">
-//             Post by ${post.User.username}
-//           </div>
-//           <div class="card-body">
-//               <h5 class="card-title">Topic: ${post.title}</h5>
-//               <p class="card-text"> ${post.description} </p>
-//               <hr>
-//               <form class="form-floating">
-//               <input class="form-control" id="${post.id}" >
-//              <label for="floatingInputValue">Add Comment</label>
-//               </form>
-//               <button class="addcomment" data-post="${post.id}">Add comments</button>
-//               <hr>
-//               <button class="post" data-post="${post.id}">See comments</button>
-//               <div id='comments ${post.id}'></div>
-//           </div>
-//           <div class="card-footer text-muted">
-//              Posted at: ${post.User.createdAt}
-//           </div>
-          
-//         </div>
-//         <br>
-//       `
-//     })
-//   })
+
 
 
 //add comments for each post when u press button for 'add comments'
@@ -109,6 +76,7 @@ function logout() {
   }
   else{
     localStorage.setItem('token', null)
+    localStorage.setItem('loggedOut', 1)
     window.location = 'login.html'
 
   }

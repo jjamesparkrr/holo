@@ -17,10 +17,18 @@ router.post('/register', (req, res)=> {
 //LOGGING IN ROUTE
 //will return a jsonwebtoken after inputting login info, which can be used to recognize who the user is and give access to what we want to look at AKA authentication aspect
 //we need to hold this via local storage and get it when we need it
-router.post('/login', ({body},res)=> {
+router.post('/login', async ({body},res)=> {
+  let user1 = await User.findOne({where:{ username: body.username } });
+  if (!user1){
+    return res.json(500, "wrong username")
+  }
   User.authenticate()(body.username, body.password, (err,user)=>{
-    if(err) {console.log(err)}
+    if(err) {return res.json(500,err.message)}
+    // console.log(res.)
+
     res.json(user ? jwt.sign({id:user.id},process.env.SECRET):null)
+    
+
   })
 })
 
