@@ -13,7 +13,6 @@ function convertDate(date) {
 // getting the posts and display them
 axios.get('/api/posts')
     .then(res => {
-        console.log(res) //array of objects
         //want to put the posts on the page
         let posts = res.data
         posts.forEach(post => {

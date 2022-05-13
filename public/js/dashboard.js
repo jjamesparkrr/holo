@@ -11,7 +11,7 @@ document.getElementById('submit').addEventListener('click', event => {
   //headers part is to make sure it knows it's authenticated
   axios.post('/api/posts', newPost, {
     headers: {
-      'Authorization': `Bearer ${localStorage.getItem('badge')}`
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
     }
   }
   )
@@ -23,7 +23,7 @@ document.getElementById('submit').addEventListener('click', event => {
 //display the user's posts
 axios.get('/user/posts', {
   headers: {
-    'Authorization': `Bearer ${localStorage.getItem('badge')}`
+    'Authorization': `Bearer ${localStorage.getItem('token')}`
   }
 })
   .then(res => {
