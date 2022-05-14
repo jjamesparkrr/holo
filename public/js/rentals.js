@@ -1,3 +1,4 @@
+
 if (localStorage.getItem('token') == "null") {
     document.getElementById('logout').style.display = 'none';
 }
@@ -7,20 +8,98 @@ else {
     document.getElementById('profile').style.display = 'block';
 }
 function convertDate(date) {
-    var d = new Date(date);
-    return d.toDateString();
+    let d = new Date(date);
+    let today = new Date();
+    // get total seconds between the times
+    let delta = Math.abs(today.getTime() - d.getTime()) / 1000;
+
+    // calculate (and subtract) whole days
+    let days = Math.floor(delta / 86400);
+    delta -= days * 86400;
+
+    // calculate (and subtract) whole hours
+    let hours = Math.floor(delta / 3600) % 24;
+    delta -= hours * 3600;
+
+    // calculate (and subtract) whole minutes
+    let minutes = Math.floor(delta / 60) % 60;
+    delta -= minutes * 60;
+
+    // what's left is seconds
+    let seconds = delta % 60;  // in theory the modulus is not required
+    let string = ""
+    if (minutes == 0 ){
+        string = "Posted " + Math.round(seconds) 
+        if (Math.round(seconds) > 1){
+            string+=  " seconds "
+        }
+        else{
+            string+=  " second "
+        }
+        string += " ago"
+        return string;
+    }
+    if (hours == 0 ){
+        string = "Posted " + minutes
+        if (minutes > 1 ){
+            string += " minutes "
+        }
+        else{
+            string += " minute "
+        }
+        string += " ago"
+        return string;
+    }
+    if (days == 0 ){
+        string = "Posted " + hours
+        if (hours > 1 ){
+            string += " hours "
+        }
+        else{
+            string += " hour "
+        }
+        string += minutes 
+        if (minutes > 1 ){
+            string += " minutes "
+        }
+        else{
+            string += " minute "
+        }
+        string += " ago"
+        return string;
+    }
+    string = "Posted " + days 
+    if (days > 1 ){
+        string += " days "
+    }
+    else{
+        string += " day "
+    }
+    string += hours
+    if (hours > 1 ){
+        string += " hours "
+    }
+    else{
+        string += " hour "
+    }
+    string += " ago"
+    return string;
+    
+    
+    
+    
 }
 // getting the posts and display them
 axios.get('/api/posts')
     .then(res => {
         //want to put the posts on the page
         let posts = res.data
-        posts.forEach(post => {
+        posts.forEach(async post => {
             document.getElementById('row').innerHTML +=
                 `
                 <div class="col"> 
-                    <a href="listing.html">
-                    <div id = "oneCard"class="card" style="width: 18rem;">
+                    <a class = "entireLink" href = "listing.html" id = "${post.id}">
+                    <div id = "oneCard" class="card" style="width: 18rem;">
                          <img src="./assets/logo.png" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">${post.title}</h5>
@@ -32,8 +111,27 @@ axios.get('/api/posts')
                     </a>
                 </div>
 
-            `
+                `;
+
+
+
+
         })
+        let userSelection = document.getElementsByClassName('entireLink');
+        for (let i = 0; i < userSelection.length; i++) {
+            userSelection[i].addEventListener('click', event => {
+                if (event.target.classList.contains('card-img-top') || event.target.classList.contains('card-text') ||
+                    event.target.classList.contains('card-body') || event.target.classList.contains('card-title')) {
+                    event.preventDefault()
+                    let postId = userSelection[i].id
+                    localStorage.setItem('postId', postId)
+                    window.location = "listing.html"
+                }
+
+            }
+            )
+        }
+
     })
 document.getElementById('addRental-btn').addEventListener('click', event => {
     event.preventDefault()
@@ -54,10 +152,14 @@ document.getElementById('addRental-btn').addEventListener('click', event => {
         .then(res => {
             console.log(res.data)
         })
-        .catch(function(error){
+        .catch(function (error) {
             alert("Must be logged in")
         })
 })
+
+
+
+
 
 function logout() {
 

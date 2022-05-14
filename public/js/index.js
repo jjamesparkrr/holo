@@ -12,31 +12,26 @@ else{
 
 
 
-//add comments for each post when u press button for 'add comments'
-// document.addEventListener('click', event => {
-//   if (event.target.classList.contains('addcomment')) {
-//     event.preventDefault()
+// add comments for each post when u press button for 'add comments'
+document.addEventListener('click', event => {
+  if (event.target.classList.contains('addcomment')) {
+    event.preventDefault()
 
-//     let postId = event.target.dataset.post
-//     console.log(postId)
-//     console.log(document.getElementById(postId).value)
-//     let newComment = {
-//       body: document.getElementById(postId).value,
-//       postId: postId
-//     }
-//     console.log(newComment)
-
-//     axios.post('/api/comments', newComment, {
-//       headers: {
-//         'Authorization': `Bearer ${localStorage.getItem('token')}`
-//       }
-//     }
-//     )
-//       .then(res => {
-//         console.log(res)
-//       })
-//     }
-// })
+    let postId = event.target.dataset.post
+    console.log(postId)
+    console.log(document.getElementById(postId).value)
+    
+    axios.post('/api/comments', newComment, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    }
+    )
+      .then(res => {
+        console.log(res)
+      })
+    }
+})
   
   
 

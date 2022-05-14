@@ -14,8 +14,10 @@ Post.init(
     },
     title: DataTypes.STRING,
     description: DataTypes.STRING,
-    price: DataTypes.DECIMAL(10,2)
-    
+    price: DataTypes.DECIMAL(10,2),
+    // fromDate: DataTypes.DATE,
+    // toDate: DataTypes.DATE
+
   },
   {
     sequelize,
