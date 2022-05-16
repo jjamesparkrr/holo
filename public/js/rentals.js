@@ -28,66 +28,66 @@ function convertDate(date) {
     // what's left is seconds
     let seconds = delta % 60;  // in theory the modulus is not required
     let string = ""
-    if (minutes == 0 ){
-        string = "Posted " + Math.round(seconds) 
-        if (Math.round(seconds) > 1){
-            string+=  " seconds "
+    if (minutes == 0) {
+        string = "Posted " + Math.round(seconds)
+        if (Math.round(seconds) > 1) {
+            string += " seconds "
         }
-        else{
-            string+=  " second "
+        else {
+            string += " second "
         }
         string += " ago"
         return string;
     }
-    if (hours == 0 ){
+    if (hours == 0) {
         string = "Posted " + minutes
-        if (minutes > 1 ){
+        if (minutes > 1) {
             string += " minutes "
         }
-        else{
+        else {
             string += " minute "
         }
         string += " ago"
         return string;
     }
-    if (days == 0 ){
+    if (days == 0) {
         string = "Posted " + hours
-        if (hours > 1 ){
+        if (hours > 1) {
             string += " hours "
         }
-        else{
+        else {
             string += " hour "
         }
-        string += minutes 
-        if (minutes > 1 ){
+        string += minutes
+        if (minutes > 1) {
             string += " minutes "
         }
-        else{
+        else {
             string += " minute "
         }
         string += " ago"
         return string;
     }
-    string = "Posted " + days 
-    if (days > 1 ){
+    string = "Posted " + days
+    if (days > 1) {
         string += " days "
     }
-    else{
+    else {
         string += " day "
     }
     string += hours
-    if (hours > 1 ){
+    if (hours > 1) {
         string += " hours "
     }
-    else{
+    else {
         string += " hour "
     }
     string += " ago"
     return string;
-    
-    
-    
-    
+
+
+
+
 }
 // getting the posts and display them
 axios.get('/api/posts')
@@ -133,6 +133,16 @@ axios.get('/api/posts')
         }
 
     })
+
+function makeAllNoneExcept(thisOne) {
+    document.getElementById('noTitleGiven').style.display = 'none';
+    document.getElementById('noPriceGiven').style.display = 'none';
+    document.getElementById('noDescriptionGiven').style.display = 'none';
+    document.getElementById('addRentalNotLoggedIn').style.display = 'none';
+    document.getElementById('invalidPriceFormat').style.display = 'none';
+
+    document.getElementById(thisOne).style.display = 'inline';
+}
 document.getElementById('addRental-btn').addEventListener('click', event => {
     event.preventDefault()
     let newPost = {
@@ -141,20 +151,41 @@ document.getElementById('addRental-btn').addEventListener('click', event => {
         price: document.getElementById('price').value
 
     }
-
-    //headers part is to make sure it knows it's authenticated
-    axios.post('/api/posts', newPost, {
-        headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
+    if (newPost.title == '') {
+        makeAllNoneExcept('noTitleGiven')
     }
-    )
-        .then(res => {
-            console.log(res.data)
-        })
-        .catch(function (error) {
-            alert("Must be logged in")
-        })
+    else if (newPost.description == '') {
+        makeAllNoneExcept('noDescriptionGiven')
+    }
+    else if (newPost.price == '') {
+        makeAllNoneExcept('noPriceGiven')
+    }
+    else {
+        //headers part is to make sure it knows it's authenticated
+        axios.post('/api/posts', newPost, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        }
+        )
+            .then(res => {
+                console.log(res)
+                window.location = "rentals.html"
+            })
+            .catch(function (error) {
+                let error_message = JSON.stringify(error.response.data)
+                if (error_message == '"Unauthorized"') {
+                    makeAllNoneExcept("addRentalNotLoggedIn");
+                }
+                else if (error_message.includes("invalid price format")) {
+                    makeAllNoneExcept("invalidPriceFormat");
+                }
+
+            })
+    }
+
+
+
 })
 
 

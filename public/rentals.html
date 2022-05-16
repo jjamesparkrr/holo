@@ -47,9 +47,11 @@
       data-bs-target="#exampleModal">
       + add new rental
     </button> </h5>
+    
   <!-- Button trigger modal -->
   <br>
   <br>
+  
   <div id="rentals" class="container">
     <div class="row" id="row" ></div>
 
@@ -101,8 +103,15 @@
 
         </div>
         <div class="modal-footer">
+          <label id="addRentalNotLoggedIn">Please log in to add a rental</label>
+          <label id="noTitleGiven">Please add a title</label>
+          <label id="noDescriptionGiven">Please add a description</label>
+          <label id="noPriceGiven">Please add a price</label>
+          <label id="invalidPriceFormat">Invalid price format</label>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" id="addRental-btn" class="btn btn-primary"  data-bs-dismiss="modal">Submit</button>
+          <button type="button" id="addRental-btn" class="btn btn-primary" data-bs-dismiss="" >Submit</button>
+          
+          
         </div>
       </div>
 

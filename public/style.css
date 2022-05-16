@@ -113,6 +113,31 @@ a:active {
   color: red;
   font-style:oblique;
 }
+#addRentalNotLoggedIn{
+  display: none;
+  color: red;
+  font-style:oblique;
+}
+#noTitleGiven{
+  display: none;
+  color: red;
+  font-style:oblique;
+}
+#noDescriptionGiven{
+  display: none;
+  color: red;
+  font-style:oblique;
+}
+#noPriceGiven{
+  display: none;
+  color: red;
+  font-style:oblique;
+}
+#invalidPriceFormat{
+  display: none;
+  color: red;
+  font-style:oblique;
+}
 #profile{
   display: none;
 }
