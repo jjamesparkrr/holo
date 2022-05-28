@@ -46,7 +46,7 @@ function logout() {
     else {
         localStorage.setItem('token', null)
         localStorage.setItem('loggedOut', 1)
-        window.location = 'login.html'
+        window.location = 'login'
 
     }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hanz">
 
 <head>
   <meta charset="utf-8">
@@ -23,19 +23,19 @@
     </a>
     <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link" href="./rentals.html">Rentals</a>
+        <a class="nav-link" href="./rentalsCn.html">租借</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./login.html" id="login">Login</a>
+        <a class="nav-link" href="./loginCn.html" id="login">登录</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./signup.html" id="signup">Sign Up</a>
+        <a class="nav-link" href="./signupCn.html" id="signup">注册</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./profile.html" id="profile">My profile</a>
+        <a class="nav-link" href="./profileCn.html" id="profile">我的账号</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./login.html" id="logout">Log out</a>
+        <a class="nav-link" href="./loginCn.html" id="logout">登出</a>
       </li>
 
     </ul>
@@ -43,9 +43,9 @@
 
 
 
-  <h5>Rentals: <button type="button" id="addRental" class="btn btn-info " data-bs-toggle="modal"
+  <h5>租借： <button type="button" id="addRental" class="btn btn-info " data-bs-toggle="modal"
       data-bs-target="#exampleModal">
-      + add new rental
+      + 添加新的租借物品
     </button> </h5>
     
   <!-- Button trigger modal -->
@@ -62,29 +62,29 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Item for Rental</h5>
+          <h5 class="modal-title" id="exampleModalLabel">租借物品</h5>
 
 
 
         </div>
         <div class="modal-body">
           <div class="input-group mb-3">
-            <label class="input-group-text" for="inputGroupSelect01">Category</label>
+            <label class="input-group-text" for="inputGroupSelect01">类别</label>
             <select class="form-select" id="inputGroupSelect01">
-              <option selected>None</option>
-              <option value="1">Snowboard</option>
-              <option value="2">Bike</option>
-              <option value="3">Surf</option>
-              <option value="3">Other</option>
+              <option selected>无</option>
+              <option value="1">滑雪板</option>
+              <option value="2">自行车</option>
+              <option value="3">冲浪板</option>
+              <option value="3">其他</option>
             </select>
           </div>
           <form class="form-floating">
             <input class="form-control" id="title">
-            <label for="floatingInputValue">Title</label>
+            <label for="floatingInputValue">标题</label>
           </form>
           <form class="form-floating">
             <input class="form-control" id="description">
-            <label for="floatingInputValue">Description</label>
+            <label for="floatingInputValue">描述</label>
           </form>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -93,9 +93,9 @@
             <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="Username"
               aria-describedby="basic-addon1">
           </div>
-          <label for="startDate">From</label>
+          <label for="startDate">从</label>
           <input id="startDate" class="form-control" id="dateFrom" type="date" />
-          <label for="startDate">To</label>
+          <label for="startDate">至</label>
           <input id="startDate" class="form-control" id="dateTo" type="date" />
 
           <input class="form-control" type="file" id="formFileMultiple" multiple />
@@ -103,13 +103,13 @@
 
         </div>
         <div class="modal-footer">
-          <label id="addRentalNotLoggedIn">Please log in to add a rental</label>
-          <label id="noTitleGiven">Please add a title</label>
-          <label id="noDescriptionGiven">Please add a description</label>
-          <label id="noPriceGiven">Please add a price</label>
-          <label id="invalidPriceFormat">Invalid price format</label>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" id="addRental-btn" class="btn btn-primary" data-bs-dismiss="" >Submit</button>
+          <label id="addRentalNotLoggedIn">请先登录以租借</label>
+          <label id="noTitleGiven">请添加标题</label>
+          <label id="noDescriptionGiven">请添加描述</label>
+          <label id="noPriceGiven">请添加价格</label>
+          <label id="invalidPriceFormat">非合法价格格式</label>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+          <button type="button" id="addRental-btn" class="btn btn-primary" data-bs-dismiss="" >提交</button>
           
           
         </div>

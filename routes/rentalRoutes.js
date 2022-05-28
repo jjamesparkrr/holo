@@ -22,6 +22,16 @@ router.get('/posts/:id', passport.authenticate('jwt'), async (req, res) => {
     res.json({ error })
   }
 })
+//ADDED FOR SEARCH
+router.get('/posts/search', async (req, res) => {
+  try {
+    //let post = await Post.findOne({where:{title: req.params.title}, include: [User,Comment] })
+    let post = await Post.findOne({where:{title: localStorage.getItem('query')}, include: [User,Comment] })
+    res.json(post)
+  } catch (error) {
+    res.json({ error })
+  }
+})
 
 
 //DELETE A POST

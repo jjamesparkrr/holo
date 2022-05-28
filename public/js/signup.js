@@ -33,7 +33,7 @@ document.getElementById('signup-btn').addEventListener('click', event => {
     axios.post('/user/register', newUser)
     .then(res => {
       localStorage.setItem("accountSuccess",1);
-      window.location = "login.html"
+      window.location = "login"
     })
     .catch(function (error) {
       if (error.response) {

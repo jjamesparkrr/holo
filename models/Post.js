@@ -21,9 +21,9 @@ Post.init(
           msg: "invalid price format"
         }
       }
-    }
-    // fromDate: DataTypes.DATE,
-    // toDate: DataTypes.DATE
+    },
+    dateFrom: DataTypes.DATE,
+    dateTo: DataTypes.DATE
 
   },
   {

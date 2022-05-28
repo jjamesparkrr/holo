@@ -72,7 +72,7 @@ document.addEventListener('click', event => {
 
 function logout() {
   localStorage.setItem('token', null)
-  window.location = 'index.html'
+  window.location = 'index.ejs'
 }
 
 document.getElementById("logout").addEventListener("click", logout);

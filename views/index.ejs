@@ -17,25 +17,25 @@
 <body>
 
   <!--  NAVBAR -->
-  <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="./index.html">
+  <nav class="navbar navbar-light bg-white">
+    <a class="navbar-brand" href="./">
       <img src="./assets/logo.png" width="120" height="80" class="d-inline-block align-top" alt="">
     </a>
     <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link" href="./rentals.html" >Rentals</a>
+        <a class="nav-link" href="./rentals" >Rentals</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./login.html" id = "login">Login</a>
+        <a class="nav-link" href="./login" id = "login">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./signup.html" id = "signup">Sign Up</a>
+        <a class="nav-link" href="./register" id = "signup">Sign Up</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"  href="./profile.html" id="profile">My profile</a>
+        <a class="nav-link"  href="./profile" id="profile">My profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"  href="./login.html" id="logout">Log out</a>
+        <a class="nav-link"  href="./login" id="logout">Log out</a>
       </li>
       
 
@@ -44,11 +44,21 @@
 
   <!-- Search form -->
   <div class="container">
-    <form action="">
+    <!-- <form action="">
       <div class="input-group mb-4">
-        <input type="search" placeholder="Search here..." aria-describedby="button-addon5" class="form-control">
+        <input id="query" type="text" placeholder="Search here..." aria-describedby="button-addon5" class="form-control">
         <div class="input-group-append">
           <button id="button-addon5" type="submit" class="btn btn-primary">Q <i class="fa fa-search"> </i> </button>
+        </div>
+      </div>
+    </form> -->
+    
+    <!--NEW SEARCH BOX AND BUTTON-->
+    <form id="search">
+      <div class="input-group mb-4">
+        <input type="text" placeholder="Search here..." aria-describedby="button-addon5" class="form-control" name="query" id="query">
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-primary">Q </button>
         </div>
       </div>
     </form>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Holo</title>
+  <link rel="stylesheet" href="../style.css">
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="/css/style.css"> -->
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+  <!--  NAVBAR -->
+  <nav class="navbar navbar-light bg-white">
+    <a class="navbar-brand" href="./">
+      <img src="./assets/logo.png" width="120" height="80" class="d-inline-block align-top" alt="">
+    </a>
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="./rentals">Rentals</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./login" id="login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./register" id="signup">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./profile" id="profile">My profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./login" id="logout">Log out</a>
+      </li>
+
+    </ul>
+  </nav>
+
+  <div id = "rentalsBar" class="navbar">
+    <a href="#home">Home</a>
+    <a href="#news">News</a>
+    <div class="dropdown">
+      <button class="dropbtn">Dropdown
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+      </div>
+    </div>
+  </div>
+
+
+
+  <h5>Rentals: <button type="button" id="addRental" class="btn btn-info " data-bs-toggle="modal"
+      data-bs-target="#exampleModal">
+      + add new rental
+    </button> </h5>
+    
+  <!-- Button trigger modal -->
+  <br>
+  <br>
+  
+  <div id="rentals" class="container">
+    <div class="row" id="row" ></div>
+
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Item for Rental</h5>
+
+
+
+        </div>
+        <div class="modal-body">
+          <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">Category</label>
+            <select class="form-select" id="inputGroupSelect01">
+              <option selected>None</option>
+              <option value="1">Snowboard</option>
+              <option value="2">Bike</option>
+              <option value="3">Surf</option>
+              <option value="3">Other</option>
+            </select>
+          </div>
+          <form class="form-floating">
+            <input class="form-control" id="title">
+            <label for="floatingInputValue">Title</label>
+          </form>
+          <form class="form-floating">
+            <input class="form-control" id="description">
+            <label for="floatingInputValue">Description</label>
+          </form>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">$</span>
+            </div>
+            <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="Username"
+              aria-describedby="basic-addon1">
+          </div>
+          <label for="startDate">From</label>
+          <input id="startDate" class="form-control" id="dateFrom" type="date" />
+          <label for="startDate">To</label>
+          <input id="startDate" class="form-control" id="dateTo" type="date" />
+
+          <input class="form-control" type="file" id="formFileMultiple" multiple />
+
+
+        </div>
+        <div class="modal-footer">
+          <label id="addRentalNotLoggedIn">Please log in to add a rental</label>
+          <label id="noTitleGiven">Please add a title</label>
+          <label id="noDescriptionGiven">Please add a description</label>
+          <label id="noPriceGiven">Please add a price</label>
+          <label id="invalidPriceFormat">Invalid price format</label>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" id="addRental-btn" class="btn btn-primary" data-bs-dismiss="" >Submit</button>
+          
+          
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"></script>
+  <script src="../js/rentals.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>

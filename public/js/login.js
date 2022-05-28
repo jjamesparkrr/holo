@@ -40,7 +40,7 @@ document.getElementById('login-btn').addEventListener('click', event => {
       }
       else{
         localStorage.setItem('token', res.data)
-        window.location = 'rentals.html'
+        window.location = 'rentals'
       }
       
     })
@@ -48,9 +48,6 @@ document.getElementById('login-btn').addEventListener('click', event => {
       let error_message = JSON.stringify(error.response.data)
       if (error_message == '"wrong username"'){
         makeAllNoneExcept('invalidLoginUser');
-      }
-      else if (error_message == '"wrong password"'){
-        
       }
     });
   }

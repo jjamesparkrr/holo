@@ -98,8 +98,9 @@ axios.get('/api/posts')
             document.getElementById('row').innerHTML +=
                 `
                 <div class="col"> 
-                    <a class = "entireLink" href = "listing.html" id = "${post.id}">
+                    
                     <div id = "oneCard" class="card" style="width: 18rem;">
+                        <a class = "entireLink" href ="rentals/${post.id}" id = "${post.id}">
                          <img src="./assets/logo.png" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">${post.title}</h5>
@@ -107,8 +108,9 @@ axios.get('/api/posts')
                             <p class="card-text">$${post.price} per day</p>
                             <p class="card-text">${convertDate(post.createdAt)} by ${post.User.username} </p>
                         </div>
+                        </a>
                     </div>
-                    </a>
+                    
                 </div>
 
                 `;
@@ -117,20 +119,20 @@ axios.get('/api/posts')
 
 
         })
-        let userSelection = document.getElementsByClassName('entireLink');
-        for (let i = 0; i < userSelection.length; i++) {
-            userSelection[i].addEventListener('click', event => {
-                if (event.target.classList.contains('card-img-top') || event.target.classList.contains('card-text') ||
-                    event.target.classList.contains('card-body') || event.target.classList.contains('card-title')) {
-                    event.preventDefault()
-                    let postId = userSelection[i].id
-                    localStorage.setItem('postId', postId)
-                    window.location = "listing.html"
-                }
+        // let userSelection = document.getElementsByClassName('entireLink');
+        // for (let i = 0; i < userSelection.length; i++) {
+        //     userSelection[i].addEventListener('click', event => {
+        //         if (event.target.classList.contains('card-img-top') || event.target.classList.contains('card-text') ||
+        //             event.target.classList.contains('card-body') || event.target.classList.contains('card-title')) {
+        //             event.preventDefault()
+        //             let postId = userSelection[i].id
+        //             window.location = "rentals/" + postId
 
-            }
-            )
-        }
+        //         }
+
+        //     }
+        //     )
+        // }
 
     })
 
@@ -140,6 +142,9 @@ function makeAllNoneExcept(thisOne) {
     document.getElementById('noDescriptionGiven').style.display = 'none';
     document.getElementById('addRentalNotLoggedIn').style.display = 'none';
     document.getElementById('invalidPriceFormat').style.display = 'none';
+
+    document.getElementById('noDateFromGiven').style.display = 'none';
+    document.getElementById('noDateToGiven').style.display = 'none';
 
     document.getElementById(thisOne).style.display = 'inline';
 }
@@ -160,6 +165,12 @@ document.getElementById('addRental-btn').addEventListener('click', event => {
     else if (newPost.price == '') {
         makeAllNoneExcept('noPriceGiven')
     }
+    else if (newPost.dateFrom == '') {
+        makeAllNoneExcept('noDateFromGiven')
+    }
+    else if (newPost.dateTo == '') {
+        makeAllNoneExcept('noDateToGiven')
+    }
     else {
         //headers part is to make sure it knows it's authenticated
         axios.post('/api/posts', newPost, {
@@ -170,7 +181,7 @@ document.getElementById('addRental-btn').addEventListener('click', event => {
         )
             .then(res => {
                 console.log(res)
-                window.location = "rentals.html"
+                window.location = "rentals"
             })
             .catch(function (error) {
                 let error_message = JSON.stringify(error.response.data)
@@ -200,7 +211,7 @@ function logout() {
     else {
         localStorage.setItem('token', null)
         localStorage.setItem('loggedOut', 1)
-        window.location = 'login.html'
+        window.location = 'login'
     }
 }
 
