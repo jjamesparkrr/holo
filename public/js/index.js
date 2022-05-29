@@ -1,5 +1,7 @@
 // const { default: axios } = require("axios")
 
+const { default: axios } = require("axios");
+
 if (localStorage.getItem('token') == "null"){
   document.getElementById('logout').style.display = 'none';
 }
@@ -8,8 +10,6 @@ else{
   document.getElementById('signup').style.display = 'none';
   document.getElementById('profile').style.display = 'block';
 }
-
-
 
 
 // add comments for each post when u press button for 'add comments'

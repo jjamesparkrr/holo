@@ -23,8 +23,9 @@ Post.init(
       }
     },
     dateFrom: DataTypes.DATE,
-    dateTo: DataTypes.DATE
-
+    dateTo: DataTypes.DATE,
+    category: DataTypes.STRING,
+    imageKey: DataTypes.STRING
   },
   {
     sequelize,

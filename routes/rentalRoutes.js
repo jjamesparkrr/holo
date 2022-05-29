@@ -2,6 +2,71 @@ const router = require('express').Router()
 const { Post, User, Comment } = require('../models')
 const passport = require('passport')
 
+require('dotenv').config()
+const fs = require('fs')
+const S3 = require('aws-sdk/clients/s3')
+
+
+const { promisify } = require('util')
+const unlinkAsync = promisify(fs.unlink)
+
+const bucketName = process.env.AWS_BUCKET_NAME
+const region = process.env.AWS_BUCKET_REGION
+const accessKeyId = process.env.AWS_ACCESS_KEY
+const secretAccessKey = process.env.AWS_SECRET_KEY
+
+const s3 = new S3({
+  region,
+  accessKeyId,
+  secretAccessKey
+})
+
+function uploadToS3(file){
+  const fileStream = fs.createReadStream(file.path)
+
+  const uploadParams = {
+    Bucket: bucketName,
+    Body: fileStream,
+    Key: file.filename
+  }
+  return s3.upload(uploadParams).promise()
+}
+
+function getFileStream(fileKey){
+  const downloadParams = {
+    Key: fileKey,
+    Bucket: bucketName
+  }
+  return s3.getObject(downloadParams).createReadStream()
+}
+const multer = require('multer');
+const upload = multer({
+  dest: 'uploads/'
+
+});
+router.get('/image/:key', (req,res)=> {
+  const key = req.params.key
+  const readStream = getFileStream(key)
+
+  readStream.pipe(res)
+}
+)
+router.post('/images', upload.single('image'), async(req, res) => {
+  if (!req.file) {
+    console.log("No file received");
+    return res.send({
+      imagePath: '/assets/logo.png'
+    });
+
+  } else {
+    
+    const result = await uploadToS3(req.file)
+    await unlinkAsync(req.file.path)
+    return res.send({
+      imagePath: '/image/'+result.Key
+    })
+  }
+});
 //GET ALL POSTS
 //jwt means that we're going to show our badge/jwt everytime we want to get all the posts
 router.get('/posts', async(req,res)=> {
@@ -32,6 +97,7 @@ router.get('/posts/search', async (req, res) => {
     res.json({ error })
   }
 })
+
 
 
 //DELETE A POST

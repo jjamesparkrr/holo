@@ -40,12 +40,12 @@ axios.get(`/api/posts/${postId}`, {
         // ADDED DATES
         document.getElementById('dateFrom').innerHTML +=
             `
-                    From: ${dateFrom.toLocaleDateString()}
+                    From: ${post.dateFrom}
                     
             `;
         document.getElementById('dateTo').innerHTML +=
             `
-                    To: ${dateTo.toLocaleDateString()}
+                    To: ${post.dateTo}
                     
             `;
 

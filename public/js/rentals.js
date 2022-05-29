@@ -101,7 +101,7 @@ axios.get('/api/posts')
                     
                     <div id = "oneCard" class="card" style="width: 18rem;">
                         <a class = "entireLink" href ="rentals/${post.id}" id = "${post.id}">
-                         <img src="./assets/logo.png" class="card-img-top" alt="...">
+                         <img src="./api${post.imageKey}" class="card-img-top" alt="..." style = "height: 200px">
                         <div class="card-body">
                             <h5 class="card-title">${post.title}</h5>
                             <p class="card-text">Description: ${post.description}</p>
@@ -153,9 +153,18 @@ document.getElementById('addRental-btn').addEventListener('click', event => {
     let newPost = {
         title: document.getElementById('title').value,
         description: document.getElementById('description').value,
-        price: document.getElementById('price').value
-
+        price: document.getElementById('price').value,
+        dateFrom: document.getElementById('dateFrom').value,
+        dateTo: document.getElementById('dateTo').value,
+        category: document.getElementById('category').value,
     }
+    let imageFile = document.getElementById('imageUpload').files[0]
+    let fd = new FormData();
+    let filename = ''
+    fd.append('image', imageFile)
+
+
+
     if (newPost.title == '') {
         makeAllNoneExcept('noTitleGiven')
     }
@@ -173,26 +182,35 @@ document.getElementById('addRental-btn').addEventListener('click', event => {
     }
     else {
         //headers part is to make sure it knows it's authenticated
-        axios.post('/api/posts', newPost, {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        }
-        )
+        axios.post('/api/images', fd)
             .then(res => {
-                console.log(res)
-                window.location = "rentals"
+                newPost.imageKey = res.data.imagePath
             })
-            .catch(function (error) {
-                let error_message = JSON.stringify(error.response.data)
-                if (error_message == '"Unauthorized"') {
-                    makeAllNoneExcept("addRentalNotLoggedIn");
+            .then(res=> {
+                axios.post('/api/posts', newPost, {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    }
                 }
-                else if (error_message.includes("invalid price format")) {
-                    makeAllNoneExcept("invalidPriceFormat");
-                }
+                )
+                    .then(res => {
+                        window.location = "rentals"
+                    })
+                    .catch(function (error) {
+                        let error_message = JSON.stringify(error.response.data)
+                        if (error_message == '"Unauthorized"') {
+                            makeAllNoneExcept("addRentalNotLoggedIn");
+                        }
+                        else if (error_message.includes("invalid price format")) {
+                            makeAllNoneExcept("invalidPriceFormat");
+                        }
+        
+                    })
+            })
+            .catch(err => {
+                alert(err)
+            })
 
-            })
     }
 
 

@@ -3,11 +3,14 @@ require("dotenv").config
 const axios = require('axios')
 
 const express = require("express")
+
 const passport = require("passport")
 const { join } = require("path");
 const {User} = require("./models")
 const {Strategy: JWTStrategy, ExtractJwt} = require('passport-jwt')
 const app = express();
+
+
 
 //urls
 app.set('view engine', 'ejs');
@@ -27,7 +30,7 @@ app.get('/rentals', function(req, res) {
 app.get('/profile', function(req, res) {
   res.render('profile');
 });
-app.get('/tos', function(req, res) {
+app.get('/terms', function(req, res) {
   res.render('tos');
 });
 
