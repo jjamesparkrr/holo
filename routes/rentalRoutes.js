@@ -97,6 +97,17 @@ router.get('/posts/:id', passport.authenticate('jwt'), async (req, res) => {
     res.json({ error })
   }
 })
+
+//GET ALL POSTS BY CATEGORY
+router.get('/category/:category', async (req, res) => {
+  try {
+    let post = await Post.findAll({where:{category: req.params.category}, include: [User,Comment] })
+    res.json(post)
+  } catch (error) {
+    res.json({ error })
+  }
+})
+
 //ADDED FOR SEARCH
 router.get('/search', async (req, res) => {
   try {
@@ -159,16 +170,16 @@ router.post('/posts', passport.authenticate('jwt'), async (req, res) => {
   }
 });
 
-router.get('/search', async(req,res)=>{
-  try{
-    let post = await Post.findAll({where: {title: req.query.q}, include: [User,Comment]})
-    res.json(post)
-  }
-  catch(err){
-    res.json(err)
-  }
+// router.get('/search', async(req,res)=>{
+//   try{
+//     let post = await Post.findAll({where: {title: req.query.q}, include: [User,Comment]})
+//     res.json(post)
+//   }
+//   catch(err){
+//     res.json(err)
+//   }
   
-} )
+// } )
 
 // router.put('/:id', async (req, res) => {
 //   try {

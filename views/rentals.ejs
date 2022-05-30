@@ -23,19 +23,19 @@
     </a>
     <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link" href="./rentals">Rentals</a>
+        <a class="nav-link" href="/rentals">Rentals</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./login" id="login">Login</a>
+        <a class="nav-link" href="/login" id="login">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./register" id="signup">Sign Up</a>
+        <a class="nav-link" href="/register" id="signup">Sign Up</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./profile" id="profile">My profile</a>
+        <a class="nav-link" href="/profile" id="profile">My profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./login" id="logout">Log out</a>
+        <a class="nav-link" href="/login" id="logout">Log out</a>
       </li>
 
     </ul>
@@ -45,11 +45,13 @@
     <div class="container">
       <form id="form" role="search" action="rentals">
         <div class="row"><div class="input-group mb-4">
-          <div class="col-8"><input type="search" placeholder="Bike, Snowboard, Surfboard..." aria-describedby="button-addon5" class="form-control" name="q" id="query"></div>
+          <div class="col-8">
+            <input type="search" placeholder="Bike, Snowboard, Surfboard..." aria-describedby="button-addon5" class="form-control" name="q" id="query" style="margin-top: 4px;">
+          </div>
             <input type="date" aria-describedby="button-addon5" class="form-control" name="df" id="queryDateFrom">
             <span class="input-group-text">To:</span>
             <input type="date" aria-describedby="button-addon5" class="form-control" name="dt" id="queryDateTo">
-          <button class="btn btn-primary">Go Time!</button>
+          <button class="btn btn-primary" id="submitButton"><span>Go Time!</span></button>
           <!-- <div class="input-group-append">
               <button class="btn btn-primary">Go Time!</button>
           </div> -->
@@ -57,7 +59,7 @@
       </form>
     </div>
 
-  <nav id = "rentalsBar" class="navbar navbar-expand-lg navbar-dark bg-white" style = "border-bottom: 1px solid lightgrey; height: 30px">
+  <!-- <nav id = "rentalsBar" class="navbar navbar-expand-lg navbar-dark bg-white" style = "border-bottom: 1px solid lightgrey; height: 30px">
     <div class="container-fluid">
       <a class="navbar-brand" href="#"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -96,20 +98,49 @@
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style = "color: black; height:30px">
-              Golf
+            <a class="nav-link" href="./profile" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style = "color: black; height:30px">
+              Camp
             </a>
-            <ul class="dropdown-menu dropdown-menu-bright" aria-labelledby="navbarDarkDropdownMenuLink">
-              <li><a class="dropdown-item" href="rentals/golf/carts">Carts</a></li>
-              <li><a class="dropdown-item" href="rentals/golf/clubs">Clubs</a></li>
-            </ul>
           </li>
 
         </ul>
       </div>
     </div>
-  </nav>
+  </nav> -->
+  <!-- <div class="nav justify-content-center">
+    <form action="rentals">
+      <input type="submit" name="c" value="Camp" id="categoryNavBar">
+      <input type="submit" name="c" value="Climb" id="categoryNavBar">
+      <input type="submit" name="c" value="Cycle" id="categoryNavBar">
+    </form>
+  </div> -->
   
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="/rentals/camp">Camp</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="/rentals/climb">Climb</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="/rentals/cycle">Cycle</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="/rentals/fitness">Fitness</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="/rentals/skate">Skate</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="/rentals/snow">Snow</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="/rentals/sports">Sports</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="/rentals/water">Water</a>
+    </li>
+  </ul>
 
   <br>
 

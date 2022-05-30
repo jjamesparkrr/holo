@@ -39,7 +39,12 @@ app.get('/profile/:id', function(req, res) {
   res.render('profileLookUp');
 });
 app.get('/rentals/:id', function(req, res) {
-  res.render('listing');
+  if (!isNaN(req.params.id)){
+    res.render('listing');
+  }
+  else{
+    res.render('rentals')
+  }
 });
 
 //MIDDLEWARE (should always be there in server.js)
