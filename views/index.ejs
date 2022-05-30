@@ -17,9 +17,12 @@
 <body>
 
   <!--  NAVBAR -->
-  <nav class="navbar navbar-light bg-white">
-    <a class="navbar-brand" href="./">
+  <nav class="navbar navbar-light bg-white" style="padding-left: 15px;">
+    <!-- <a class="navbar-brand" href="./">
       <img src="./assets/logo.png" width="120" height="80" class="d-inline-block align-top" alt="">
+    </a> -->
+    <a class="navbar-brand" href="../">
+      <img src="../assets/logo.png" width="157.5" height="75" class="d-inline-block align-top" alt="Holo Logo">
     </a>
     <ul class="nav">
       <li class="nav-item">
@@ -43,7 +46,7 @@
   </nav>
 
   <!-- Search form -->
-  <div class="container">
+  
     <!-- <form action="">
       <div class="input-group mb-4">
         <input id="query" type="text" placeholder="Search here..." aria-describedby="button-addon5" class="form-control">
@@ -52,30 +55,21 @@
         </div>
       </div>
     </form> -->
-
-    <!-- Search form -->
-    <div class="container">
-      <!-- <form action="">
-      <div class="input-group mb-4">
-        <input id="query" type="text" placeholder="Search here..." aria-describedby="button-addon5" class="form-control">
-        <div class="input-group-append">
-          <button id="button-addon5" type="submit" class="btn btn-primary">Q <i class="fa fa-search"> </i> </button>
-        </div>
-      </div>
-    </form> -->
-
-      <!--NEW SEARCH BOX AND BUTTON-->
-      <form id="form" role="search" action="rentals">
-        <div class="input-group mb-4">
-          <input type="search" placeholder="Search..." aria-describedby="button-addon5" class="form-control" name="q"
-            id="query">
-          <div class="input-group-append">
+    
+    <!--NEW SEARCH BOX AND BUTTON-->
+  <div class="container">
+    <form id="form" role="search" action="rentals">
+      <div class="row"><div class="input-group mb-4">
+        <div class="col-8"><input type="search" placeholder="Bike, Snowboard, Surfboard..." aria-describedby="button-addon5" class="form-control" name="q" id="query"></div>
+          <input type="date" aria-describedby="button-addon5" class="form-control" name="df" id="queryDateFrom">
+          <span class="input-group-text">To:</span>
+          <input type="date" aria-describedby="button-addon5" class="form-control" name="dt" id="queryDateTo">
+        <button class="btn btn-primary">Go Time!</button>
+        <!-- <div class="input-group-append">
             <button class="btn btn-primary">Go Time!</button>
-          </div>
-        </div>
-      </form>
-    </div>
-
+        </div> -->
+      </div></div>
+    </form>
   </div>
 
   <!-- Home Main Pic -->

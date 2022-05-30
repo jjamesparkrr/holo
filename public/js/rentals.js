@@ -1,4 +1,3 @@
-
 if (localStorage.getItem('token') == "null") {
     document.getElementById('logout').style.display = 'none';
 }
@@ -89,39 +88,37 @@ function convertDate(date) {
 
 
 }
-// getting the posts and display them
+
 let query = window.location.search
 if (query.includes('?')){
+    let dateFrom = new Date(window.location.search.split('&')[1].substring(3))
+    let dateTo = new Date(window.location.search.split('&')[2].substring(3))
+    document.getElementById('queryDateFrom').valueAsDate = dateFrom;
+    document.getElementById('queryDateTo').valueAsDate = dateTo;
     axios.get('/api/search' + query)
-    .then(res=>{
-      
-        let posts = res.data
-        
-        posts.forEach(async post => {
-            firstImage = post.imageKey.split(' ')[0]
-            document.getElementById('row').innerHTML +=
-                `
-                <div class="col"> 
-                    
-                    <div id = "oneCard" class="card" style="width: 18rem;">
-                        <a class = "entireLink" href ="rentals/${post.id}" id = "${post.id}">
-                         <img src="./api/image/${firstImage}" class="card-img-top" alt="..." style = "height: 200px">
-                        <div class="card-body">
-                            <h5 class="card-title">${post.title}</h5>
-                            <p class="card-text">Description: ${post.description}</p>
-                            <p class="card-text">$${post.price} per day</p>
-                            <p class="card-text text-muted">${convertDate(post.createdAt)} by ${post.User.username} </p>
+        .then(res=>{
+            console.log(res.data)
+        //want to put the posts on the page
+            let posts = res.data
+            posts.forEach(async post => {
+                document.getElementById('row').innerHTML +=
+                    `
+                    <div class="col"> 
+                        
+                        <div id = "oneCard" class="card" style="width: 18rem;">
+                            <a class = "entireLink" href ="rentals/${post.id}" id = "${post.id}">
+                                <img src="./api${post.imageKey}" class="card-img-top" alt="..." style = "height: 200px">
+                            <div class="card-body">
+                                <h5 class="card-title">${post.title}</h5>
+                                <p class="card-text">Description: ${post.description}</p>
+                                <p class="card-text">$${post.price} per day</p>
+                                <p class="card-text">${convertDate(post.createdAt)} by ${post.User.username} </p>
+                            </div>
+                            </a>
                         </div>
-                        </a>
+                        
                     </div>
-                    
-                </div>
-
-                `;
-
-
-
-
+                    `;
         })
     })
 }
@@ -139,7 +136,7 @@ else{
                     
                     <div id = "oneCard" class="card" style="width: 18rem;">
                         <a class = "entireLink" href ="rentals/${post.id}" id = "${post.id}">
-                         <img src="./api/image/${firstImage}" class="card-img-top" alt="..." style = "height: 200px">
+                        <img src="./api/image/${firstImage}" class="card-img-top" alt="..." style = "height: 200px">
                         <div class="card-body">
                             <h5 class="card-title">${post.title}</h5>
                             <p class="card-text">Description: ${post.description}</p>
@@ -152,29 +149,9 @@ else{
                 </div>
 
                 `;
-
-
-
-
         })
-        // let userSelection = document.getElementsByClassName('entireLink');
-        // for (let i = 0; i < userSelection.length; i++) {
-        //     userSelection[i].addEventListener('click', event => {
-        //         if (event.target.classList.contains('card-img-top') || event.target.classList.contains('card-text') ||
-        //             event.target.classList.contains('card-body') || event.target.classList.contains('card-title')) {
-        //             event.preventDefault()
-        //             let postId = userSelection[i].id
-        //             window.location = "rentals/" + postId
-
-        //         }
-
-        //     }
-        //     )
-        // }
-
     })
 }
-
 
 function makeAllNoneExcept(thisOne) {
     document.getElementById('noTitleGiven').style.display = 'none';
@@ -205,8 +182,6 @@ document.getElementById('addRental-btn').addEventListener('click', event => {
     }
     
     
-
-
 
     if (newPost.title == '') {
         makeAllNoneExcept('noTitleGiven')
@@ -264,12 +239,7 @@ document.getElementById('addRental-btn').addEventListener('click', event => {
 
     }
 
-
-
 })
-
-
-
 
 
 function logout() {

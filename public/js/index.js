@@ -1,3 +1,4 @@
+// const { default: axios } = require("axios")
 
 if (localStorage.getItem('token') == "null"){
   document.getElementById('logout').style.display = 'none';
@@ -8,6 +9,12 @@ else{
   document.getElementById('profile').style.display = 'block';
 }
 
+const dateFrom = new Date();
+const dateTo = new Date();
+dateFrom.setDate(dateFrom.getDate() + 1)
+dateTo.setDate(dateTo.getDate() + 4)
+document.getElementById('queryDateFrom').valueAsDate = dateFrom;
+document.getElementById('queryDateTo').valueAsDate = dateTo;
 
 // add comments for each post when u press button for 'add comments'
 document.addEventListener('click', event => {
