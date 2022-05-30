@@ -29,7 +29,7 @@ function convertDate(date) {
     let seconds = delta % 60;  // in theory the modulus is not required
     let string = ""
     if (minutes == 0) {
-        string = "Posted " + Math.round(seconds)
+        string =  Math.round(seconds)
         if (Math.round(seconds) > 1) {
             string += " seconds "
         }
@@ -40,7 +40,7 @@ function convertDate(date) {
         return string;
     }
     if (hours == 0) {
-        string = "Posted " + minutes
+        string =  minutes
         if (minutes > 1) {
             string += " minutes "
         }
@@ -51,7 +51,7 @@ function convertDate(date) {
         return string;
     }
     if (days == 0) {
-        string = "Posted " + hours
+        string =  hours
         if (hours > 1) {
             string += " hours "
         }
@@ -68,7 +68,7 @@ function convertDate(date) {
         string += " ago"
         return string;
     }
-    string = "Posted " + days
+    string =  days
     if (days > 1) {
         string += " days "
     }
@@ -90,23 +90,61 @@ function convertDate(date) {
 
 }
 // getting the posts and display them
-axios.get('/api/posts')
-    .then(res => {
-        //want to put the posts on the page
+let query = window.location.search
+if (query.includes('?')){
+    axios.get('/api/search' + query)
+    .then(res=>{
+      
         let posts = res.data
+        
         posts.forEach(async post => {
+            firstImage = post.imageKey.split(' ')[0]
             document.getElementById('row').innerHTML +=
                 `
                 <div class="col"> 
                     
                     <div id = "oneCard" class="card" style="width: 18rem;">
                         <a class = "entireLink" href ="rentals/${post.id}" id = "${post.id}">
-                         <img src="./api${post.imageKey}" class="card-img-top" alt="..." style = "height: 200px">
+                         <img src="./api/image/${firstImage}" class="card-img-top" alt="..." style = "height: 200px">
                         <div class="card-body">
                             <h5 class="card-title">${post.title}</h5>
                             <p class="card-text">Description: ${post.description}</p>
                             <p class="card-text">$${post.price} per day</p>
-                            <p class="card-text">${convertDate(post.createdAt)} by ${post.User.username} </p>
+                            <p class="card-text text-muted">${convertDate(post.createdAt)} by ${post.User.username} </p>
+                        </div>
+                        </a>
+                    </div>
+                    
+                </div>
+
+                `;
+
+
+
+
+        })
+    })
+}
+else{
+    axios.get('/api/posts')
+    .then(res => {
+        //want to put the posts on the page
+        let posts = res.data
+        
+        posts.forEach(async post => {
+            firstImage = post.imageKey.split(' ')[0]
+            document.getElementById('row').innerHTML +=
+                `
+                <div class="col"> 
+                    
+                    <div id = "oneCard" class="card" style="width: 18rem;">
+                        <a class = "entireLink" href ="rentals/${post.id}" id = "${post.id}">
+                         <img src="./api/image/${firstImage}" class="card-img-top" alt="..." style = "height: 200px">
+                        <div class="card-body">
+                            <h5 class="card-title">${post.title}</h5>
+                            <p class="card-text">Description: ${post.description}</p>
+                            <p class="card-text">$${post.price} per day</p>
+                            <p class="card-text text-muted">${convertDate(post.createdAt)} by ${post.User.username} </p>
                         </div>
                         </a>
                     </div>
@@ -135,6 +173,8 @@ axios.get('/api/posts')
         // }
 
     })
+}
+
 
 function makeAllNoneExcept(thisOne) {
     document.getElementById('noTitleGiven').style.display = 'none';
@@ -158,10 +198,13 @@ document.getElementById('addRental-btn').addEventListener('click', event => {
         dateTo: document.getElementById('dateTo').value,
         category: document.getElementById('category').value,
     }
-    let imageFile = document.getElementById('imageUpload').files[0]
+    let imageFile = document.getElementById('imageUpload').files
     let fd = new FormData();
-    let filename = ''
-    fd.append('image', imageFile)
+    for (let i = 0; i < imageFile.length; i ++){
+        fd.append('image', imageFile[i])
+    }
+    
+    
 
 
 
@@ -184,6 +227,14 @@ document.getElementById('addRental-btn').addEventListener('click', event => {
         //headers part is to make sure it knows it's authenticated
         axios.post('/api/images', fd)
             .then(res => {
+                
+          
+                if (res.data.length > 5){
+                    alert("You can only choose up to 5 images!")
+                }
+                else if (res.data.length == 0){
+                    alert("You have chosen to post with no images!")
+                }
                 newPost.imageKey = res.data.imagePath
             })
             .then(res=> {

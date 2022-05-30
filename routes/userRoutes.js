@@ -32,23 +32,34 @@ router.post('/login', async ({body},res)=> {
   })
 })
 
-// get users
+router.get('/user', passport.authenticate('jwt'), async(req,res)=>{
+  let user = req.user
+  res.json(user)
+})
+// get users information
 router.get('/users',async (req, res) => {
   try {
-    let users = await User.findAll({attributes: ['username', 'email']})
-    res.json(users)
+    
+    let users = await User.findOne({attributes: ['id']})
+    return res.json(users)
   } catch (error) {
     res.json({ error })
   }
 })
 
-//GET USER'S POSTS
-router.get('/userPosts', passport.authenticate('jwt'), (req, res) => {
-  res.json(req.user)
+router.put('/update', async (req,res)=> {
+  // try{
+    await User.update({avatar: req.body.avatar}, {where: {id: req.body.id}})
+    
+  res.sendStatus(200)
+  // }
+  // catch (err ){
+  //   res.json(err)
+  // }
 })
 
-// TESTING
-router.get('/posts/', passport.authenticate('jwt'), async (req, res) => {
+//GET USER'S POSTS
+router.get('/userPosts', passport.authenticate('jwt'), async (req, res) => {
   try {
     
     let post = await Post.findAll({ where: { userId: req.user.id }, include: [User] })

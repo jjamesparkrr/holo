@@ -30,10 +30,14 @@ app.get('/rentals', function(req, res) {
 app.get('/profile', function(req, res) {
   res.render('profile');
 });
+
 app.get('/terms', function(req, res) {
   res.render('tos');
 });
 
+app.get('/profile/:id', function(req, res) {
+  res.render('profileLookUp');
+});
 app.get('/rentals/:id', function(req, res) {
   res.render('listing');
 });

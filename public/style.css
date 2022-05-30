@@ -187,3 +187,32 @@ a, a:hover, a:focus, a:active {
 	#rentalsBar .nav-item:hover .dropdown-menu{ display: block; }
 	#rentalsBar .nav-item .dropdown-menu{ margin-top:0; }
 }	
+
+#listingImg{
+  height: 500px;
+}
+
+#pricePerDay{
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 30px
+}
+#listingTitle{
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 50px
+}
+#listingStartDate{
+  color: lightseagreen
+}
+#listingEndDate{
+  color: lightseagreen
+}
+
+.carousel-control-prev-icon{
+  background-color: grey;
+}
+.carousel-control-next-icon{
+  background-color: grey;
+}
+#bottomButtons{
+  background-color: grey;
+}

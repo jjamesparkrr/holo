@@ -23,21 +23,21 @@
     </a>
     <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link" href="./rentals" >Rentals</a>
+        <a class="nav-link" href="./rentals">Rentals</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./login" id = "login">Login</a>
+        <a class="nav-link" href="./login" id="login">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./register" id = "signup">Sign Up</a>
+        <a class="nav-link" href="./register" id="signup">Sign Up</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"  href="./profile" id="profile">My profile</a>
+        <a class="nav-link" href="./profile" id="profile">My profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"  href="./login" id="logout">Log out</a>
+        <a class="nav-link" href="./login" id="logout">Log out</a>
       </li>
-      
+
 
     </ul>
   </nav>
@@ -52,16 +52,30 @@
         </div>
       </div>
     </form> -->
-    
-    <!--NEW SEARCH BOX AND BUTTON-->
-    <form id="search">
+
+    <!-- Search form -->
+    <div class="container">
+      <!-- <form action="">
       <div class="input-group mb-4">
-        <input type="text" placeholder="Search here..." aria-describedby="button-addon5" class="form-control" name="query" id="query">
+        <input id="query" type="text" placeholder="Search here..." aria-describedby="button-addon5" class="form-control">
         <div class="input-group-append">
-          <button type="submit" class="btn btn-primary">Q </button>
+          <button id="button-addon5" type="submit" class="btn btn-primary">Q <i class="fa fa-search"> </i> </button>
         </div>
       </div>
-    </form>
+    </form> -->
+
+      <!--NEW SEARCH BOX AND BUTTON-->
+      <form id="form" role="search" action="rentals">
+        <div class="input-group mb-4">
+          <input type="search" placeholder="Search..." aria-describedby="button-addon5" class="form-control" name="q"
+            id="query">
+          <div class="input-group-append">
+            <button class="btn btn-primary">Go Time!</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
   </div>
 
   <!-- Home Main Pic -->
@@ -84,16 +98,16 @@
         <img src="./assets/signup.png" class="d-block w-100" alt="...">
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <button  class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span   class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <button  class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
+      <span  class="visually-hidden">Next</span>
     </button>
   </div>
-  
+
 
   <br>
 

@@ -1,6 +1,3 @@
-// const { default: axios } = require("axios")
-
-const { default: axios } = require("axios");
 
 if (localStorage.getItem('token') == "null"){
   document.getElementById('logout').style.display = 'none';
@@ -32,7 +29,7 @@ document.addEventListener('click', event => {
       })
     }
 })
-  
+
   
 
 
@@ -72,7 +69,7 @@ function logout() {
   else{
     localStorage.setItem('token', null)
     localStorage.setItem('loggedOut', 1)
-    window.location = 'login.ejs'
+    window.location = 'login'
 
   }
   

@@ -51,26 +51,12 @@
 
   <div class="container overflow-hidden">
     <div class="row gy-5">
-      <div class="col-6">
+      <div class="col-12">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-              aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-              aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-              aria-label="Slide 3"></button>
+          <div class="carousel-indicators" id="carouselIndicators">
           </div>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="../assets/homepage.png" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-              <img src="../assets/logo.png" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-              <img src="../assets/signup.png" class="d-block w-100" alt="...">
-            </div>
+          <div class="carousel-inner" id="imageCarousel">
+
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
             data-bs-slide="prev">
@@ -84,47 +70,62 @@
           </button>
         </div>
       </div>
-      <div class="col-6">
-        <h1 id="title"></h1>
+      <div class="col-8">
+
+        <div>
+          <h1 id="listingTitle"></h1>
+        </div>
+        <div id="daysAgo" class="text-muted">
+        </div>
+        <hr>
+        <div>
+          <span>Category: </span>
+          <span id="category"></span>
+        </div>
+        
+        <div>
+          LISTED BY
+        </div>
+        <hr>
+        <div>
+          DESCRIPTION
+        </div>
+        <div id="description" class="col-6">
+        </div>
+
       </div>
-      <div class="col-6">
-        <h3>Description: </h3>
+      <div class="col-4">
+        <div>
+          <span id="pricePerDay"></span>
+          <span> / day </span>
+        </div>
+        <div>
+          <label id = "listingStartDate" for="startDate">Rental from</label>
+          <input class="form-control" id="listingDateFrom" type="date" />
+          <label id = "listingEndDate" for="endDate">Rental to</label>
+          <input class="form-control" id="listingDateTo" type="date" />
+          <button type="button">Message Owner</button>
+          <button type="button">Rent now</button>
+        </div>
+
       </div>
-      <div id = "price" class="col-6">
-        <h3>Price</h3>
-      </div>
-      <div id = "description" class="col-6">
-        <h3></h3>
-      </div>
-      <div class="col-6">
-        <h3>Dates</h3>
-      </div>
-      <div id = "dateFrom" class="col-6">
-        <h3></h3>
-      </div>
-      <div id = "dateTo" class="col-6">
-        <h3></h3>
-      </div>
-      <div class="col-6"></div>
-      <div class="col-6">
-        <button type="button">Message Owner</button>
-      </div>
-      <div class="col-6"></div>
-      <div class="col-6">
-        <button type="button">Owner Profile Page</button>
-      </div>
+      
+
+
+
     </div>
   </div>
-
-
-
   
+
+
+
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"></script>
   <script src="../js/listing.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
-    
+
 </body>
 
 </html>

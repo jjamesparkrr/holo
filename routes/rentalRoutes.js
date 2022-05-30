@@ -39,11 +39,9 @@ function getFileStream(fileKey){
   }
   return s3.getObject(downloadParams).createReadStream()
 }
+const path = require('path')
 const multer = require('multer');
-const upload = multer({
-  dest: 'uploads/'
-
-});
+let upload = multer({ dest: 'uploads/' })
 router.get('/image/:key', (req,res)=> {
   const key = req.params.key
   const readStream = getFileStream(key)
@@ -51,19 +49,30 @@ router.get('/image/:key', (req,res)=> {
   readStream.pipe(res)
 }
 )
-router.post('/images', upload.single('image'), async(req, res) => {
-  if (!req.file) {
+router.post('/images', upload.array('image',5), async(req, res) => {
+  console.log(req.files.length)
+  if (!req.files.length) {
     console.log("No file received");
     return res.send({
-      imagePath: '/assets/logo.png'
+      success: false,
+      length: 0,
+      imagePath: 'No_image_available.svg.png'
     });
 
   } else {
-    
-    const result = await uploadToS3(req.file)
-    await unlinkAsync(req.file.path)
+    resultKeys = ''
+    count = 0
+    for (var file of req.files){
+
+      const result = await uploadToS3(file)
+      resultKeys += result.Key + ' '
+      await unlinkAsync(file.path)
+      count+=1
+    }
     return res.send({
-      imagePath: '/image/'+result.Key
+      success: true,
+      length: count,
+      imagePath: resultKeys.trimEnd()
     })
   }
 });
@@ -87,16 +96,7 @@ router.get('/posts/:id', passport.authenticate('jwt'), async (req, res) => {
     res.json({ error })
   }
 })
-//ADDED FOR SEARCH
-router.get('/posts/search', async (req, res) => {
-  try {
-    //let post = await Post.findOne({where:{title: req.params.title}, include: [User,Comment] })
-    let post = await Post.findOne({where:{title: localStorage.getItem('query')}, include: [User,Comment] })
-    res.json(post)
-  } catch (error) {
-    res.json({ error })
-  }
-})
+
 
 
 
@@ -127,7 +127,16 @@ router.post('/posts', passport.authenticate('jwt'), async (req, res) => {
   }
 });
 
-
+router.get('/search', async(req,res)=>{
+  try{
+    let post = await Post.findAll({where: {title: req.query.q}, include: [User,Comment]})
+    res.json(post)
+  }
+  catch(err){
+    res.json(err)
+  }
+  
+} )
 
 // router.put('/:id', async (req, res) => {
 //   try {

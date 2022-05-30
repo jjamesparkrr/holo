@@ -32,7 +32,18 @@ const User = pls.defineUser(sequelize, {
         msg: "not a valid email format"
       }
     }
-  }
+  },
+  avatar: {
+    type: DataTypes.STRING,
+    defaultValue: "sbcf-default-avatar.png",
+  },
+  firstName: DataTypes.STRING,
+  lastName: DataTypes.STRING,
+  country: DataTypes.STRING,
+  city: DataTypes.STRING,
+  state: DataTypes.STRING,
+  rating: DataTypes.DECIMAL,
+  phoneNum: DataTypes.STRING
 })
 
 
