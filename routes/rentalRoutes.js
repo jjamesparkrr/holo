@@ -6,6 +6,7 @@ require('dotenv').config()
 const fs = require('fs')
 const S3 = require('aws-sdk/clients/s3')
 
+const { Op } = require("sequelize")
 
 const { promisify } = require('util')
 const unlinkAsync = promisify(fs.unlink)
@@ -96,7 +97,38 @@ router.get('/posts/:id', passport.authenticate('jwt'), async (req, res) => {
     res.json({ error })
   }
 })
-
+//ADDED FOR SEARCH
+router.get('/search', async (req, res) => {
+  try {
+    let post = await Post.findAll({
+      where: {
+        [Op.and]: [
+          {
+            [Op.or]: [
+                {
+                  [Op.and]: [
+                    {dateFrom: {[Op.lte]: `${req.query.df}`}},
+                    {dateTo: {[Op.gte]: `${req.query.dt}`}}
+                  ]
+                },
+                {dateFrom: {[Op.between]: [`${req.query.df}`, `${req.query.dt}`]}},
+                {dateTo: {[Op.between]: [`${req.query.df}`, `${req.query.dt}`]}}
+            ]
+          },
+          {
+            [Op.or]: [
+              {title: {[Op.like]: `%${req.query.q}%`}},
+              {description: {[Op.like]: `%${req.query.q}%`}}
+            ]
+          }
+        ]
+      }, include: [User,Comment] 
+    })
+    res.json(post)
+  } catch (error) {
+    res.json({ error })
+  }
+})
 
 
 

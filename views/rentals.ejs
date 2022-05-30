@@ -17,9 +17,9 @@
 <body>
 
   <!--  NAVBAR -->
-  <nav class="navbar navbar-light bg-white">
-    <a class="navbar-brand" href="./">
-      <img src="./assets/logo.png" width="120" height="80" class="d-inline-block align-top" alt="">
+  <nav class="navbar navbar-light bg-white" style="padding-left: 15px;">
+    <a class="navbar-brand" href="../">
+      <img src="../assets/logo.png" width="157.5" height="75" class="d-inline-block align-top" alt="Holo Logo">
     </a>
     <ul class="nav">
       <li class="nav-item">
@@ -40,6 +40,22 @@
 
     </ul>
   </nav>
+
+    <!--NEW SEARCH BOX AND BUTTON-->
+    <div class="container">
+      <form id="form" role="search" action="rentals">
+        <div class="row"><div class="input-group mb-4">
+          <div class="col-8"><input type="search" placeholder="Bike, Snowboard, Surfboard..." aria-describedby="button-addon5" class="form-control" name="q" id="query"></div>
+            <input type="date" aria-describedby="button-addon5" class="form-control" name="df" id="queryDateFrom">
+            <span class="input-group-text">To:</span>
+            <input type="date" aria-describedby="button-addon5" class="form-control" name="dt" id="queryDateTo">
+          <button class="btn btn-primary">Go Time!</button>
+          <!-- <div class="input-group-append">
+              <button class="btn btn-primary">Go Time!</button>
+          </div> -->
+        </div></div>
+      </form>
+    </div>
 
   <nav id = "rentalsBar" class="navbar navbar-expand-lg navbar-dark bg-white" style = "border-bottom: 1px solid lightgrey; height: 30px">
     <div class="container-fluid">
@@ -126,9 +142,14 @@
             <label class="input-group-text" for="inputGroupSelect01">Category</label>
             <select class="form-select" id="category">
               <option selected>None</option>
-              <option value="Snowboard">Snowboard</option>
-              <option value="Bike">Bike</option>
-              <option value="Surf">Surf</option>
+              <option value="Camp">Camp</option>
+              <option value="Climb">Climb</option>
+              <option value="Cycle">Cycle</option>
+              <option value="Fitness">Fitness</option>
+              <option value="Skate">Skate</option>
+              <option value="Snow">Snow</option>
+              <option value="Sports">Sports</option>
+              <option value="Water">Water</option>
               <option value="Other">Other</option>
             </select>
           </div>
