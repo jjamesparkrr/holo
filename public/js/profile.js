@@ -247,7 +247,7 @@ document.getElementById('editButton').addEventListener('click', event => {
             updatedUser.id = res.data.id
             axios.put('/user/updateAll', updatedUser)
                 .then(res2 => {
-                    console.log('success!')
+                    window.location = 'profile'
                 })
         })
 
