@@ -229,3 +229,10 @@ a, a:hover, a:focus, a:active {
   color: black;
 }
 
+#welcomeUsername{
+  color: darkgreen;
+  font-weight: bold;
+  font-size: 55px;
+  font-family:cursive;
+  display: none;
+}

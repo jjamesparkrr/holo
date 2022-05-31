@@ -1,4 +1,4 @@
-// const { default: axios } = require("axios")
+
 
 if (localStorage.getItem('token') == "null"){
   document.getElementById('logout').style.display = 'none';
@@ -9,6 +9,14 @@ else{
   document.getElementById('profile').style.display = 'block';
 }
 
+if(localStorage.getItem('welcome') == 1){
+  document.getElementById('welcomeUsername').style.display = 'inline'
+  localStorage.setItem('welcome',0)
+}
+else{
+  document.getElementById('welcomeUsername').style.display = 'none'
+}
+
 const dateFrom = new Date();
 const dateTo = new Date();
 dateFrom.setDate(dateFrom.getDate() + 1)
@@ -16,6 +24,15 @@ dateTo.setDate(dateTo.getDate() + 4)
 document.getElementById('queryDateFrom').valueAsDate = dateFrom;
 document.getElementById('queryDateTo').valueAsDate = dateTo;
 
+
+axios.get('/user/user', {
+  headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+  }
+})
+.then(res=>{
+  document.getElementById('welcomeUsername').innerHTML += "Welcome to Holo, " + res.data.username
+})
 // add comments for each post when u press button for 'add comments'
 document.addEventListener('click', event => {
   if (event.target.classList.contains('addcomment')) {

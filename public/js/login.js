@@ -40,7 +40,8 @@ document.getElementById('login-btn').addEventListener('click', event => {
       }
       else{
         localStorage.setItem('token', res.data)
-        window.location = 'rentals'
+        localStorage.setItem('welcome', 1)
+        window.location = '/'
       }
       
     })
