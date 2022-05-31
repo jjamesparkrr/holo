@@ -4,6 +4,7 @@ const router = require('express').Router()
 const Post = require('./Post')
 const Comment = require('./Comment')
 const User = require('./User')
+const Message = require('./Message')
 
 
 User.hasMany(Post, {
@@ -30,4 +31,13 @@ Comment.belongsTo(User, {
   onDelete: 'CASCADE'
 })
 
-module.exports = {Post, Comment, User}
+Message.belongsTo(Post, {
+  foreignKey: 'postId'
+})
+
+Message.belongsTo(User, {
+  foreignKey: 'userId',
+  onDelete: 'CASCADE'
+})
+
+module.exports = {Post, Comment, User, Message}

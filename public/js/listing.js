@@ -106,12 +106,12 @@ function convertDate(date) {
         11: "November",
         12: "December"
     }
-    return monthToName[d.getMonth()+1] + " " + d.getDate() + " " + d.getFullYear();
+    return monthToName[d.getMonth() + 1] + " " + d.getDate() + " " + d.getFullYear();
 }
 let postId = window.location.pathname.split('/')[2]
 
 
-let userId = {id: 0}
+let userId = { id: 0 }
 axios.get(`/api/posts/${postId}`, {
     headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -119,11 +119,11 @@ axios.get(`/api/posts/${postId}`, {
 })
     .then(async res => {
         //want to put the posts on the page
-        
+
         let post = res.data
         imageList = post.imageKey.split(' ')
 
-        
+
         document.getElementById('category').innerHTML +=
             `
             ${post.category}
@@ -209,18 +209,18 @@ axios.get(`/api/posts/${postId}`, {
                     `
                 document.getElementById('userName').innerHTML += res.data.username
                 document.getElementById('countryListing').innerHTML += res.data.country
-                document.getElementById('cityListing').innerHTML +=res.data.city +', ' +res.data.state
+                document.getElementById('cityListing').innerHTML += res.data.city + ', ' + res.data.state
                 document.getElementById('joinDate').innerHTML += convertDate(res.data.createdAt)
-                document.getElementById('linkToProfile').href = "/profile/" +res.data.id
+                document.getElementById('linkToProfile').href = "/profile/" + res.data.id
             })
 
     })
-    
+
     .catch(function (error) {
         let error_message = JSON.stringify(error.response.data)
         if (error_message == '"Unauthorized"') {
             alert("You must be logged in to see more details")
-            window.location ="login"
+            window.location = "login"
         }
 
     });
@@ -228,8 +228,29 @@ axios.get(`/api/posts/${postId}`, {
 
 
 
-document.getElementById('payment').addEventListener('click',event=>{
-    window.location = "/rentals/" + postId +"/payment"
+document.getElementById('payment').addEventListener('click', event => {
+    axios.get(`/api/posts/${postId}`, {
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+        .then(async res => {
+            let post = res.data
+            let listing = "?listing=" + post.id
+            let dfDate = new Date(post.dateFrom).getTime()
+            let dtDate = new Date(post.dateTo).getTime()
+            let df = "&df=" + dfDate
+            let dt = "&dt=" + dtDate
+            let price = "&p=" + post.price
+
+            let delta = Math.abs(dtDate - dfDate) / 1000;
+
+            // calculate (and subtract) whole days
+            let d = Math.floor(delta / 86400);
+            let days = "&days=" + d
+            window.location = "/rentals/" + postId + "/payment" + listing + df + dt + price + days
+        })
+
 })
 function logout() {
 
