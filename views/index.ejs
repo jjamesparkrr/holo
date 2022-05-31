@@ -26,19 +26,19 @@
     </a>
     <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link" href="./rentals">Rentals</a>
+        <a class="nav-link" href="/rentals">All Rentals</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./login" id="login">Login</a>
+        <a class="nav-link" href="/login" id="login">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./register" id="signup">Sign Up</a>
+        <a class="nav-link" href="/register" id="signup">Sign Up</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./profile" id="profile">My profile</a>
+        <a class="nav-link" href="/profile" id="profile">My profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./login" id="logout">Log out</a>
+        <a class="nav-link" href="/login" id="logout">Log out</a>
       </li>
 
 
@@ -75,23 +75,60 @@
   </div>
 
   <!-- Home Main Pic -->
-  <div>
-    <img src="./assets/homepage.png" class="img-fluid" alt="Responsive image">
+  <div class="containter" style="position: relative;text-align: center;">
+    <img src="./assets/homepage.jpg" alt="Homepage Image">
+      <div style="position: absolute; top: 27%; bottom: 73%;left: 25%;right: 25%;">
+        <h4>Discover something new to rent</h4>
+      </div>
+      
   </div>
   <br>
 
-  <h4>Discover Something New to Rent</h4>
-
   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="./assets/homepage.png" class="d-block w-100" alt="...">
+      <div class="carousel-item active" style="height: 400px;">
+        <a href="/rentals/camp">
+          <img src="./assets/camp.jpeg" class="d-block w-100" alt="camping" style="width:100%;height:100%;object-fit:cover;">
+        </a>
+        <div class="carousel-caption d-none d-md-block">
+          <h4>FIND CAMPING GEAR</h4>
+        </div>
       </div>
-      <div class="carousel-item">
-        <img src="./assets/logo.png" class="d-block w-100" alt="...">
+
+      <div class="carousel-item" style="height: 400px;">
+        <a href="/rentals/water">
+          <img src="./assets/surf.jpg" class="d-block w-100" alt="camping" style="width:100%;height:100%;object-fit:cover;">
+        </a>
+        <div class="carousel-caption d-none d-md-block">
+          <h4>FIND SURFBOARDS</h4>
+        </div>
       </div>
-      <div class="carousel-item">
-        <img src="./assets/signup.png" class="d-block w-100" alt="...">
+
+      <div class="carousel-item" style="height: 400px;">
+        <a href="/rentals/cycle">
+          <img src="./assets/bike.jpg" class="d-block w-100" alt="biking" style="width:100%;height:100%;object-fit:cover;">
+        </a>
+        <div class="carousel-caption d-none d-md-block">
+          <h4>FIND BIKES</h4>
+        </div>
+      </div>
+
+      <div class="carousel-item" style="height: 400px;">
+        <a href="/rentals/snow">
+          <img src="./assets/snowboard.jpg" class="d-block w-100" alt="camping" style="width:100%;height:100%;object-fit:cover;">
+        </a>
+        <div class="carousel-caption d-none d-md-block">
+          <h4>FIND SNOWBOARDS</h4>
+        </div>
+      </div>
+
+      <div class="carousel-item" style="height: 400px;">
+        <a href="/rentals/climb">
+          <img src="./assets/climbing.jpg" class="d-block w-100" alt="camping" style="width:100%;height:100%;object-fit:cover;">
+        </a>
+        <div class="carousel-caption d-none d-md-block">
+          <h4>FIND CLIMBING GEAR</h4>
+        </div>
       </div>
     </div>
     <button  class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -104,9 +141,24 @@
     </button>
   </div>
 
-
+  <br>
   <br>
 
+  <div class="row">
+    <div class="col-lg-8" style="display:block;margin-left:auto;margin-right:auto;">
+      <div class="card text-center">
+        <div class="card-body">
+          <h3 class="card-title">What is Holo?</h3>
+          <p class="card-text">Our mission is to allow people who have unused sporting equipment lying around,
+             such as bikes, surfboards, or snowboards, to be able to rent their equipment for a short period of time.</p>
+          <p class="card-text">We give owners an opportunity to make money in a safe and insured way, 
+             while people who are looking for high quality equipment, 
+             but may not have the means to attain or store these items, can rent it for a fraction of the price.</p>
+          <p class="card-text">We promote sustainability and encourage people to get outside and enjoy life.</p>
+          <a href="/rentals/" class="btn btn-primary">Explore Rentals</a>
+        </div>
+      </div>
+    </div>
 
   <script src=" https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"></script>
   <script src="./js/index.js"></script>

@@ -23,7 +23,7 @@
     </a>
     <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link" href="/rentals">Rentals</a>
+        <a class="nav-link" href="/rentals">All Rentals</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/login" id="login">Login</a>
@@ -140,17 +140,23 @@
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="/rentals/water">Water</a>
     </li>
+    <li style="padding-left: 18px;">
+      <button type="button" id="addRental" class="btn btn-info " data-bs-toggle="modal"
+        data-bs-target="#exampleModal">
+        Create a Post
+      </button>
+    </li>
   </ul>
 
   <br>
 
-  <h5><button type="button" id="addRental" class="btn btn-info " data-bs-toggle="modal"
-      data-bs-target="#exampleModal">
-      + add new rental
-    </button> </h5>
-    
+  <!-- <h5><button type="button" id="addRental" class="btn btn-info " data-bs-toggle="modal"
+      data-bs-target="#exampleModal" style="position: absolute;right:150px;top:170px">
+      Create a Post
+    </button> </h5> -->
+
   <!-- Button trigger modal -->
-  <br>
+  
   <br>
   
   <div id="rentals" class="container">
