@@ -51,7 +51,6 @@ router.get('/image/:key', (req,res)=> {
 }
 )
 router.post('/images', upload.array('image',5), async(req, res) => {
-  console.log(req.files.length)
   if (!req.files.length) {
     console.log("No file received");
     return res.send({

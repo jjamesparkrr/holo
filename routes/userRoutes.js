@@ -24,49 +24,55 @@ router.post('/login', async ({body},res)=> {
   }
   User.authenticate()(body.username, body.password, (err,user)=>{
     if(err) {return res.json(500,err.message)}
-    // console.log(res.)
 
     res.json(user ? jwt.sign({id:user.id},process.env.SECRET):null)
     
 
   })
 })
-
+//get current user inforrmation
 router.get('/user', passport.authenticate('jwt'), async(req,res)=>{
-  let user = req.user
+  try{
+    let user = req.user
   res.json(user)
+  }
+  catch(err){
+    res.json(err)
+  }
+  
 })
-// get users information
-router.get('/users',async (req, res) => {
+
+// get users information by id
+router.get('/user/:id',async (req, res) => {
   try {
-    
-    let users = await User.findOne({attributes: ['id']})
-    return res.json(users)
+    let user = await User.findOne({where: {id: req.params.id}})
+    return res.json(user)
   } catch (error) {
     res.json({ error })
   }
 })
 
+
 router.put('/update', async (req,res)=> {
-  // try{
+  try{
     await User.update({avatar: req.body.avatar}, {where: {id: req.body.id}})
     
   res.sendStatus(200)
-  // }
-  // catch (err ){
-  //   res.json(err)
-  // }
+  }
+  catch (err ){
+    res.json(err)
+  }
 })
 
 router.put('/updateAll', async (req,res)=> {
-  // try{
+  try{
     await User.update(req.body, {where: {id: req.body.id}})
     
   res.sendStatus(200)
-  // }
-  // catch (err ){
-  //   res.json(err)
-  // }
+  }
+  catch (err ){
+    res.json(err)
+  }
 })
 
 //GET USER'S POSTS
@@ -74,6 +80,15 @@ router.get('/userPosts', passport.authenticate('jwt'), async (req, res) => {
   try {
     
     let post = await Post.findAll({ where: { userId: req.user.id }, include: [User] })
+    res.json(post)
+  } catch (error) {
+    res.json({ error })
+  }
+})
+router.get('/userPosts/:id', passport.authenticate('jwt'), async (req, res) => {
+  try {
+    
+    let post = await Post.findAll({ where: { userId: req.params.id }, include: [User] })
     res.json(post)
   } catch (error) {
     res.json({ error })

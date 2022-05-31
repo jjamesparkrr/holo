@@ -79,18 +79,71 @@
         </div>
         <hr>
         <div>
-          <span>Category: </span>
-          <span id="category"></span>
+          <span style="font-family: serif; font-weight: bold;">CATEGORY: </span>
+
+          <span style="font-family: serif" id="category"></span>
         </div>
-        
-        <div>
+        <br>
+
+        <div style="font-family:serif; font-weight: bold">
           LISTED BY
         </div>
-        <hr>
+        <br>
         <div>
+
+
+
+          <div class="col-8">
+            <div class="card" style="border-radius: 15px; border-color: white">
+              <div class="card-body p-4">
+                <a id="linkToProfile" class="d-flex text-black">
+                  <div id="userAvatar">
+
+                  </div>
+                  <div class="flex-grow-1 ms-3">
+                    <h5 class="mb-1" id="userName"
+                      style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif"></h5>
+                    <div>
+                      <div style="font-family:fantasy" id="countryListing">
+                      </div>
+                      <div style="font-family:fantasy">
+                        <span id="cityListing"></span>
+                        <span class="dot"> </span>
+                        <span id="joinDate"> Joined </span>
+
+                      </div>
+                      <div class="text-muted">
+                        3 miles away
+                      </div>
+
+
+
+                    </div>
+
+
+
+                  </div>
+                </a>
+                <div class="d-flex pt-1">
+                  <button type="button" class="btn btn-outline-primary me-1 flex-grow-1" data-bs-toggle="modal"
+                    data-bs-target="#myModal">
+                    Message
+                  </button>
+
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <hr>
+        <div style="font-family:serif; font-weight: bold">
           DESCRIPTION
         </div>
-        <div id="description" class="col-6">
+        <div style="font-family: serif" id="description" class="col-6">
         </div>
 
       </div>
@@ -100,22 +153,61 @@
           <span> / day </span>
         </div>
         <div>
-          <label id = "listingStartDate" for="startDate">Rental from</label>
+          <label id="listingStartDate" for="startDate">From</label>
           <input class="form-control" id="listingDateFrom" type="date" />
-          <label id = "listingEndDate" for="endDate">Rental to</label>
+          <label id="listingEndDate" for="endDate">To</label>
           <input class="form-control" id="listingDateTo" type="date" />
-          <button type="button">Message Owner</button>
-          <button type="button">Rent now</button>
+          <br>
+          <button id="payment" type="button" class="btn btn-primary flex-grow-1">
+            Rent now
+          </button>
         </div>
 
       </div>
-      
+
+
 
 
 
     </div>
   </div>
-  
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Message the seller</h5>
+
+
+
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="message"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" id="messageButton" class="btn btn-primary" data-bs-dismiss="modal">Send</button>
+          
+          
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+
+  <br>
 
 
 

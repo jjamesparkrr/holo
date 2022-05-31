@@ -39,6 +39,12 @@ app.get('/profile/:id', function(req, res) {
   res.render('profileLookUp');
 });
 
+app.get('/rentals/:id/payment', function(req,res){
+  res.render('payment')
+})
+app.get('/payment/checkout/:succesOrFail', function(req,res){
+  res.render('payment')
+})
 app.get('/rentals/:id', function(req, res) {
   if (!isNaN(req.params.id)){
     res.render('listing');
@@ -47,6 +53,7 @@ app.get('/rentals/:id', function(req, res) {
     res.render('rentals')
   }
 });
+
 
 
 //MIDDLEWARE (should always be there in server.js)

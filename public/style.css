@@ -201,10 +201,12 @@ a, a:hover, a:focus, a:active {
   font-size: 50px
 }
 #listingStartDate{
-  color: lightseagreen
+  color: lightseagreen;
+  font-weight:bold
 }
 #listingEndDate{
-  color: lightseagreen
+  color: lightseagreen;
+  font-weight:bold
 }
 
 .carousel-control-prev-icon{
@@ -216,3 +218,14 @@ a, a:hover, a:focus, a:active {
 #bottomButtons{
   background-color: grey;
 }
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: grey;
+  border-radius: 50%;
+  display: inline-block;
+}
+#linkToProfile:hover{
+  color: black;
+}
+

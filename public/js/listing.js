@@ -89,15 +89,29 @@ function postedAgo(date) {
 
 
 }
-function convertDate(date){
+function convertDate(date) {
     let d = new Date(date);
-    console.log(d)
+
+    monthToName = {
+        1: "January",
+        2: "February",
+        3: "March",
+        4: "April",
+        5: "May",
+        6: "June",
+        7: "July",
+        8: "August",
+        9: "September",
+        10: "October",
+        11: "November",
+        12: "December"
+    }
+    return monthToName[d.getMonth()+1] + " " + d.getDate() + " " + d.getFullYear();
 }
 let postId = window.location.pathname.split('/')[2]
 
-let today = new Date();
-convertDate(today)
 
+let userId = {id: 0}
 axios.get(`/api/posts/${postId}`, {
     headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -105,15 +119,17 @@ axios.get(`/api/posts/${postId}`, {
 })
     .then(async res => {
         //want to put the posts on the page
+        
         let post = res.data
         imageList = post.imageKey.split(' ')
-        console.log(post)
-        document.getElementById('category').innerHTML+=
-        `
+
+        
+        document.getElementById('category').innerHTML +=
+            `
             ${post.category}
         `
         document.getElementById('daysAgo').innerHTML +=
-        `
+            `
             ${postedAgo(post.createdAt)}
         `
         document.getElementById('listingTitle').innerHTML +=
@@ -130,14 +146,14 @@ axios.get(`/api/posts/${postId}`, {
                     
             `;
         // ADDED DATES
-        document.getElementById('listingDateFrom').value = post.dateFrom.substring(0,10)
+        document.getElementById('listingDateFrom').value = post.dateFrom.substring(0, 10)
 
         document.getElementById('listingDateFrom').innerHTML +=
             `
                     ${post.dateFrom}
                     
             `;
-        document.getElementById('listingDateTo').value = post.dateTo.substring(0,10)
+        document.getElementById('listingDateTo').value = post.dateTo.substring(0, 10)
         document.getElementById('listingDateTo').innerHTML +=
             `       
                     ${post.dateTo}
@@ -171,24 +187,50 @@ axios.get(`/api/posts/${postId}`, {
                 document.getElementById('carouselIndicators').innerHTML +=
                     `
                  <button id="bottomButtons" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${i}"
-                aria-current="true" aria-label="Slide ${i+1}"></button>
+                aria-current="true" aria-label="Slide ${i + 1}"></button>
 
                 `;
             }
 
         }
 
+        axios.get('/user/user/' + post.User.id, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(res => {
+                document.getElementById('userAvatar').innerHTML +=
+                    `
+        
+                    <img src="/api/image/${res.data.avatar}"  class="rounded-circle"
+                    width="75" height ="75">
+        
+                    `
+                document.getElementById('userName').innerHTML += res.data.username
+                document.getElementById('countryListing').innerHTML += res.data.country
+                document.getElementById('cityListing').innerHTML +=res.data.city +', ' +res.data.state
+                document.getElementById('joinDate').innerHTML += convertDate(res.data.createdAt)
+                document.getElementById('linkToProfile').href = "/profile/" +res.data.id
+            })
 
     })
+    
     .catch(function (error) {
         let error_message = JSON.stringify(error.response.data)
         if (error_message == '"Unauthorized"') {
             alert("You must be logged in to see more details")
-            window.location = "../login"
+            window.location ="login"
         }
 
     });
 
+
+
+
+document.getElementById('payment').addEventListener('click',event=>{
+    window.location = "/rentals/" + postId +"/payment"
+})
 function logout() {
 
     if (localStorage.getItem('token') == "null") {
