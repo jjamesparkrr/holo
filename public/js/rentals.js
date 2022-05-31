@@ -360,7 +360,7 @@ document.getElementById('addRental-btn').addEventListener('click', event => {
                 }
                 )
                     .then(res => {
-                        window.location = "rentals"
+                        window.location = "/rentals"
                     })
                     .catch(function (error) {
                         let error_message = JSON.stringify(error.response.data)

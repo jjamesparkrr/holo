@@ -237,8 +237,8 @@ document.getElementById('payment').addEventListener('click', event => {
         .then(async res => {
             let post = res.data
             let listing = "?listing=" + post.id
-            let dfDate = new Date(post.dateFrom).getTime()
-            let dtDate = new Date(post.dateTo).getTime()
+            let dfDate = new Date(document.getElementById('listingDateFrom').value).getTime()
+            let dtDate = new Date(document.getElementById('listingDateTo').value).getTime()
             let df = "&df=" + dfDate
             let dt = "&dt=" + dtDate
             let price = "&p=" + post.price
@@ -246,7 +246,7 @@ document.getElementById('payment').addEventListener('click', event => {
             let delta = Math.abs(dtDate - dfDate) / 1000;
 
             // calculate (and subtract) whole days
-            let d = Math.floor(delta / 86400);
+            let d = Math.floor(delta / 86400) + 1;
             let days = "&days=" + d
             window.location = "/rentals/" + postId + "/payment" + listing + df + dt + price + days
         })
