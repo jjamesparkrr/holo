@@ -220,7 +220,7 @@ axios.get(`/api/posts/${postId}`, {
         let error_message = JSON.stringify(error.response.data)
         if (error_message == '"Unauthorized"') {
             alert("You must be logged in to see more details")
-            window.location = "login"
+            window.location = "/login"
         }
 
     });

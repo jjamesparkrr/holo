@@ -102,24 +102,24 @@ if (query.includes('?')){
         posts.forEach(async post => {
             firstImage = post.imageKey.split(' ')[0]
             document.getElementById('row').innerHTML +=
-                `
-                <div class="col"> 
-                    
-                    <div id = "oneCard" class="card" style="width: 18rem;">
-                        <a class = "entireLink" href ="rentals/${post.id}" id = "${post.id}">
-                         <img src="./api/image/${firstImage}" class="card-img-top" alt="..." style = "height: 200px">
-                        <div class="card-body">
-                            <h5 class="card-title">${post.title}</h5>
-                            <p class="card-text">Description: ${post.description}</p>
-                            <p class="card-text">$${post.price} per day</p>
-                            <p class="card-text text-muted">${convertDate(post.createdAt)} by ${post.User.username} </p>
-                        </div>
-                        </a>
+            `
+            <div class="col"> 
+                
+                <div id = "oneCard" class="card" style="width: 18rem;">
+                    <a class = "entireLink" href ="rentals/${post.id}" id = "${post.id}">
+                     <img src="../api/image/${firstImage}" class="card-img-top" alt="..." style = "height: 200px">
+                    <div class="card-body">
+                        <h5 class="card-title" style ="font-family:serif; font-weight:bold; font-size:20px">${post.title}</h5>
+                        <p class="card-text">Description: ${post.description}</p>
+                        <p class="card-text">$${post.price} per day</p>
+                        <p class="card-text text-muted" style = "font-size: 12px">${convertDate(post.createdAt)} by ${post.User.username} </p>
                     </div>
-                    
+                    </a>
                 </div>
+                
+            </div>
 
-                `;
+            `;
         })
     })
 }
@@ -136,24 +136,24 @@ else if (isNaN(param) && param){
         posts.forEach(async post => {
             firstImage = post.imageKey.split(' ')[0]
             document.getElementById('row').innerHTML +=
-                `
-                <div class="col"> 
-                    
-                    <div id = "oneCard" class="card" style="width: 18rem;">
-                        <a class = "entireLink" href ="${post.id}" id = "${post.id}">
-                         <img src="../api/image/${firstImage}" class="card-img-top" alt="..." style = "height: 200px">
-                        <div class="card-body">
-                            <h5 class="card-title">${post.title}</h5>
-                            <p class="card-text">Description: ${post.description}</p>
-                            <p class="card-text">$${post.price} per day</p>
-                            <p class="card-text text-muted">${convertDate(post.createdAt)} by ${post.User.username} </p>
-                        </div>
-                        </a>
+            `
+            <div class="col"> 
+                
+                <div id = "oneCard" class="card" style="width: 18rem;">
+                    <a class = "entireLink" href ="rentals/${post.id}" id = "${post.id}">
+                     <img src="../api/image/${firstImage}" class="card-img-top" alt="..." style = "height: 200px">
+                    <div class="card-body">
+                        <h5 class="card-title" style ="font-family:serif; font-weight:bold; font-size:20px">${post.title}</h5>
+                        <p class="card-text">Description: ${post.description}</p>
+                        <p class="card-text">$${post.price} per day</p>
+                        <p class="card-text text-muted" style = "font-size: 12px">${convertDate(post.createdAt)} by ${post.User.username} </p>
                     </div>
-                    
+                    </a>
                 </div>
+                
+            </div>
 
-                `;
+            `;
         })
     })
 }
@@ -165,24 +165,24 @@ else if (isNaN(param) && param){
         posts.forEach(async post => {
             firstImage = post.imageKey.split(' ')[0]
             document.getElementById('row').innerHTML +=
-                `
-                <div class="col"> 
-                    
-                    <div id = "oneCard" class="card" style="width: 18rem;">
-                        <a class = "entireLink" href ="/rentals/${post.id}" id = "${post.id}">
-                         <img src="../api/image/${firstImage}" class="card-img-top" alt="..." style = "height: 200px">
-                        <div class="card-body">
-                            <h5 class="card-title">${post.title}</h5>
-                            <p class="card-text">Description: ${post.description}</p>
-                            <p class="card-text">$${post.price} per day</p>
-                            <p class="card-text text-muted">${convertDate(post.createdAt)} by ${post.User.username} </p>
-                        </div>
-                        </a>
+            `
+            <div class="col"> 
+                
+                <div id = "oneCard" class="card" style="width: 18rem;">
+                    <a class = "entireLink" href ="rentals/${post.id}" id = "${post.id}">
+                     <img src="../api/image/${firstImage}" class="card-img-top" alt="..." style = "height: 200px">
+                    <div class="card-body">
+                        <h5 class="card-title" style ="font-family:serif; font-weight:bold; font-size:20px">${post.title}</h5>
+                        <p class="card-text">Description: ${post.description}</p>
+                        <p class="card-text">$${post.price} per day</p>
+                        <p class="card-text text-muted" style = "font-size: 12px">${convertDate(post.createdAt)} by ${post.User.username} </p>
                     </div>
-                    
+                    </a>
                 </div>
+                
+            </div>
 
-                `;
+            `;
 
 
 
@@ -210,10 +210,10 @@ else{
                         <a class = "entireLink" href ="rentals/${post.id}" id = "${post.id}">
                          <img src="../api/image/${firstImage}" class="card-img-top" alt="..." style = "height: 200px">
                         <div class="card-body">
-                            <h5 class="card-title">${post.title}</h5>
+                            <h5 class="card-title" style ="font-family:serif; font-weight:bold; font-size:20px">${post.title}</h5>
                             <p class="card-text">Description: ${post.description}</p>
                             <p class="card-text">$${post.price} per day</p>
-                            <p class="card-text text-muted">${convertDate(post.createdAt)} by ${post.User.username} </p>
+                            <p class="card-text text-muted" style = "font-size: 12px">${convertDate(post.createdAt)} by ${post.User.username} </p>
                         </div>
                         </a>
                     </div>
