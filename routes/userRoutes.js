@@ -58,6 +58,17 @@ router.put('/update', async (req,res)=> {
   // }
 })
 
+router.put('/updateAll', async (req,res)=> {
+  // try{
+    await User.update(req.body, {where: {id: req.body.id}})
+    
+  res.sendStatus(200)
+  // }
+  // catch (err ){
+  //   res.json(err)
+  // }
+})
+
 //GET USER'S POSTS
 router.get('/userPosts', passport.authenticate('jwt'), async (req, res) => {
   try {
