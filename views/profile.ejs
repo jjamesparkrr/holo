@@ -52,12 +52,12 @@
                 </button>
 
                 <div class="mt-3">
-                  <h4>First Last</h4>
+                  <h4 id ="showFirstLast"></h4>
 
-                  <p class="text-secondary mb-1">username</p>
+                  <p class="text-secondary mb-1" id = "usernameUnderAvatar"></p>
                   <br>
-                  <p class="text-muted font-size-sm">Country</p>
-                  <p class="text-muted font-size-sm">City, State</p>
+                  <p class="text-muted font-size-sm" id = "showCountryUnderAvatar"></p>
+                  <p class="text-muted font-size-sm" id = "showCityState"></p>
 
                   <button class="btn btn-outline-primary">Message</button>
                   <br>
@@ -82,10 +82,9 @@
 
               <div class="row">
                 <div class="col-sm-3">
-                  <h6 class="mb-0">First Name</h6>
+                  <h6 class="mb-0" >First Name</h6>
                 </div>
-                <div class="col-sm-9 text-secondary">
-                  First Name
+                <div class="col-sm-9 text-secondary" id = "showFirst">
                 </div>
               </div>
               <hr>
@@ -93,8 +92,7 @@
                 <div class="col-sm-3">
                   <h6 class="mb-0">Last Name</h6>
                 </div>
-                <div class="col-sm-9 text-secondary">
-                  Last Name
+                <div class="col-sm-9 text-secondary" id = "showLast">
                 </div>
               </div>
               <hr>
@@ -102,8 +100,8 @@
                 <div class="col-sm-3">
                   <h6 class="mb-0">Email</h6>
                 </div>
-                <div class="col-sm-9 text-secondary">
-                  youremail@email.com
+                <div class="col-sm-9 text-secondary" id = "showEmail">
+                
                 </div>
               </div>
               <hr>
@@ -111,8 +109,7 @@
                 <div class="col-sm-3">
                   <h6 class="mb-0">Phone</h6>
                 </div>
-                <div class="col-sm-9 text-secondary">
-                  Your Phone #
+                <div class="col-sm-9 text-secondary" id = "showPhone">
                 </div>
               </div>
               <hr>
@@ -120,17 +117,15 @@
                 <div class="col-sm-3">
                   <h6 class="mb-0">Country</h6>
                 </div>
-                <div class="col-sm-9 text-secondary">
-                  Country
+                <div class="col-sm-9 text-secondary" id = "showCountry">
                 </div>
               </div>
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <h6 class="mb-0">City</h6>
+                  <h6 class="mb-0">City</h6 > 
                 </div>
-                <div class="col-sm-9 text-secondary">
-                  City
+                <div class="col-sm-9 text-secondary" id = "showCity">
                 </div>
               </div>
               <hr>
@@ -138,8 +133,7 @@
                 <div class="col-sm-3">
                   <h6 class="mb-0">State</h6>
                 </div>
-                <div class="col-sm-9 text-secondary">
-                  State
+                <div class="col-sm-9 text-secondary" id = "showState">
                 </div>
               </div>
               <hr>
@@ -201,27 +195,27 @@
         </div>
         <div class="modal-body">
           <form class="form-floating">
-            <input class="form-control" id="firstName" placeholder = "">
+            <input class="form-control" id="firstName">
             <label for="floatingInputValue">First Name</label>
           </form>
           <form class="form-floating">
-            <input class="form-control" id="lastName">
+            <input class="form-control" id="lastName" placeholder = "">
             <label for="floatingInputValue">Last Name</label>
           </form>
           <form class="form-floating">
-            <input class="form-control" id="changeEmail">
+            <input class="form-control" id="changeEmail" placeholder = "">
             <label for="floatingInputValue">Email</label>
           </form>
           <form class="form-floating">
-            <input class="form-control" id="phone">
+            <input class="form-control" id="phone" placeholder = "">
             <label for="floatingInputValue">Phone #</label>
           </form>
           <form class="form-floating">
-            <input class="form-control" id="country">
+            <input class="form-control" id="country" placeholder = "">
             <label for="floatingInputValue">Country</label>
           </form>
           <form class="form-floating">
-            <input class="form-control" id="city">
+            <input class="form-control" id="city" placeholder = "">
             <label for="floatingInputValue">City</label>
           </form>
           <form class="form-floating">
@@ -291,7 +285,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" id="addAvatar-btn" class="btn btn-primary" data-bs-dismiss="">Save changes</button>
+          <button type="button" id="editButton" class="btn btn-primary" data-bs-dismiss="">Save changes</button>
         </div>
       </div>
 

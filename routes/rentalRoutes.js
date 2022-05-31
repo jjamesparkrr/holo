@@ -143,6 +143,7 @@ router.get('/search', async (req, res) => {
 
 
 
+
 //DELETE A POST
 router.delete('/posts/:id', passport.authenticate('jwt'), async (req, res) => {
   try {
@@ -170,34 +171,8 @@ router.post('/posts', passport.authenticate('jwt'), async (req, res) => {
   }
 });
 
-// router.get('/search', async(req,res)=>{
-//   try{
-//     let post = await Post.findAll({where: {title: req.query.q}, include: [User,Comment]})
-//     res.json(post)
-//   }
-//   catch(err){
-//     res.json(err)
-//   }
-  
-// } )
 
-// router.put('/:id', async (req, res) => {
-//   try {
-//     const [affectedRows] = await Post.update(req.body, {
-//       where: {
-//         id: req.params.id,
-//       },
-//     });
 
-//     if (affectedRows > 0) {
-//       res.status(200).end();
-//     } else {
-//       res.status(404).end();
-//     }
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 
 // router.delete('/:id', async (req, res) => {
 //   try {

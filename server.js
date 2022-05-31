@@ -38,6 +38,7 @@ app.get('/terms', function(req, res) {
 app.get('/profile/:id', function(req, res) {
   res.render('profileLookUp');
 });
+
 app.get('/rentals/:id', function(req, res) {
   if (!isNaN(req.params.id)){
     res.render('listing');
@@ -46,6 +47,7 @@ app.get('/rentals/:id', function(req, res) {
     res.render('rentals')
   }
 });
+
 
 //MIDDLEWARE (should always be there in server.js)
 app.use(express.static(join(__dirname, 'public')));

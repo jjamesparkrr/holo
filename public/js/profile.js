@@ -7,7 +7,7 @@ else {
 }
 
 let userId = window.location
-console.log(userId)
+
 // userId.search = "hi"
 function convertDate(date) {
     let d = new Date(date);
@@ -91,12 +91,64 @@ function convertDate(date) {
 
 
 }
-axios.get('/user/user', {headers: {
-    'Authorization': `Bearer ${localStorage.getItem('token')}`
-}})
-.then(res=>{
-    document.getElementById('avatarIcon').src ="./api/image/" + res.data.avatar
+axios.get('/user/user', {
+    headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+    }
 })
+    .then(res => {
+        //setting default values on profile page for that user
+        document.getElementById('usernameUnderAvatar').innerHTML += res.data.username
+
+        if (res.data.firstName) {
+            document.getElementById('showFirst').innerHTML += res.data.firstName
+            document.getElementById('firstName').value = res.data.firstName
+        }
+
+        if (res.data.lastName) {
+            document.getElementById('showLast').innerHTML += res.data.lastName
+            document.getElementById('lastName').value = res.data.lastName
+        }
+
+        if (res.data.email) {
+            document.getElementById('showEmail').innerHTML += res.data.email
+            document.getElementById('changeEmail').value = res.data.email
+        }
+
+        if (res.data.phoneNum) {
+            document.getElementById('showPhone').innerHTML += res.data.phoneNum
+            document.getElementById('phone').value = res.data.phoneNum
+        }
+
+        if (res.data.country) {
+            document.getElementById('showCountry').innerHTML += res.data.country
+            document.getElementById('country').value = res.data.country
+            document.getElementById('showCountryUnderAvatar').innerHTML += res.data.country
+        }
+
+
+        if(res.data.city) {
+            document.getElementById('showCity').innerHTML += res.data.city
+            document.getElementById('city').value = res.data.city
+        }
+        
+        if(res.data.state){
+            document.getElementById('showState').innerHTML += res.data.state
+            document.getElementById('state').value = res.data.state            
+        }
+        
+
+        if (res.data.firstName && res.data.lastName){
+            document.getElementById('showFirstLast').innerHTML += res.data.firstName + ' ' + res.data.lastName
+        }
+        
+        if (res.data.city && res.data.state){
+            document.getElementById('showCityState').innerHTML += res.data.city + ', ' + res.data.state  
+        }
+        
+
+        document.getElementById('avatarIcon').src = "./api/image/" + res.data.avatar
+    })
 
 axios.get('/user/userPosts', {
     headers: {
@@ -148,35 +200,58 @@ document.getElementById('addAvatar-btn').addEventListener('click', event => {
     for (let i = 0; i < imageFile.length; i++) {
         fd.append('image', imageFile[i])
     }
-    
-    
-    axios.get('/user/user', {headers: {
+
+
+    axios.get('/user/user', {
+        headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
-    }})
-    .then(res3=>{
-        axios.post('/api/images', fd)
-        .then(async res => {
-            axios.put('/user/update', {avatar: res.data.imagePath, id: res3.data.id})
-                .then(res2=>{
-                    window.location = 'profile'
+        }
+    })
+        .then(res3 => {
+
+            axios.post('/api/images', fd)
+                .then(async res => {
+                    axios.put('/user/update', { avatar: res.data.imagePath, id: res3.data.id })
+                        .then(res2 => {
+                            window.location = 'profile'
+                        })
+
+
                 })
-            
-
         })
-    })
-    .catch(err=>{
-        alert(err)
-    })
-
-    
-
-
-
+        .catch(err => {
+            alert(err)
+        })
 
 })
 
+document.getElementById('editButton').addEventListener('click', event => {
+    event.preventDefault()
+    let updatedUser = {
+        id: '',
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        email: document.getElementById('changeEmail').value,
+        phoneNum: document.getElementById('phone').value,
+        country: document.getElementById('country').value,
+        city: document.getElementById('city').value,
+        state: document.getElementById('state').value,
+    }
+    axios.get('/user/user', {
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+        .then(res => {
 
+            updatedUser.id = res.data.id
+            axios.put('/user/updateAll', updatedUser)
+                .then(res2 => {
+                    window.location = 'profile'
+                })
+        })
 
+})
 
 
 function logout() {
