@@ -28,7 +28,7 @@ AWS_SECRET_KEY="CMJr3xweciHlMG4z4JyM2UXPssn/ea1Feh+PNi5n"
 
 Copy and paste node modules folder
 
-Run these in a new terminal in a different directory:
+Run these in a new terminal in your home directory:
 
 npm install aws-sdk
 
