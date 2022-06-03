@@ -97,6 +97,15 @@ router.get('/posts/:id', passport.authenticate('jwt'), async (req, res) => {
   }
 })
 
+router.delete('/posts/:id', passport.authenticate('jwt'), async (req, res) => {
+  try {
+    let post = await Post.destroy({where:{id: req.params.id}})
+    res.json(post)
+  } catch (error) {
+    res.json({ error })
+  }
+})
+
 //GET ALL POSTS BY CATEGORY
 router.get('/category/:category', async (req, res) => {
   try {
