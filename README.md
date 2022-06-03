@@ -8,30 +8,30 @@ Node.js
 
 mySQL
 
-Terminal npm installations:
+Steps:
 
-npm i
+run the schema.sql
 
-npm i axios 
+Create .env file and paste this:
 
-npm i dotenv
+LOCAL_URL=mysql://root:yourpassword@localhost/holo
 
-npm i express
+SECRET=SECRET
 
-npm i express-session
+AWS_BUCKET_NAME="holo-rental-images"
 
-npm i jsonwebtoken
+AWS_BUCKET_REGION="us-west-1"
 
-npm i passport-local-sequelize
+AWS_ACCESS_KEY="AKIAVS5DMPMGTRWY73F7"
 
-npm i passport
+AWS_SECRET_KEY="CMJr3xweciHlMG4z4JyM2UXPssn/ea1Feh+PNi5n"
 
-npm i sequelize
+Copy and paste node modules folder
 
-npm i session
+Run these in a new terminal in a different directory:
 
-Extra steps:
+npm install aws-sdk
 
-Copy paste /db/schema.sql to mySQL (I use WorkBench)
+npm install --save multer
 
-Create your own branch for the github, James Park is using main branch
+npm install ejs 
