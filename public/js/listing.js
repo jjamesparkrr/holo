@@ -1,4 +1,5 @@
 
+
 //display the user's posts
 if (localStorage.getItem('token') == "null") {
 }
@@ -111,7 +112,8 @@ function convertDate(date) {
 let postId = window.location.pathname.split('/')[2]
 
 
-let userId = { id: 0 }
+
+
 axios.get(`/api/posts/${postId}`, {
     headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -199,7 +201,7 @@ axios.get(`/api/posts/${postId}`, {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         })
-            .then(res => {
+            .then(async res => {
                 document.getElementById('userAvatar').innerHTML +=
                     `
         
@@ -207,6 +209,19 @@ axios.get(`/api/posts/${postId}`, {
                     width="75" height ="75">
         
                     `
+                await axios.get('/user/user', {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    }
+                })
+                    .then(async result => {
+                        if (result.data.id == post.User.id) {
+                            document.getElementById('delete').style.display = 'inline'
+                        }
+                        else{
+                            document.getElementById('payment').style.display = 'inline' 
+                        }
+                    })
                 document.getElementById('userName').innerHTML += res.data.username
                 document.getElementById('countryListing').innerHTML += res.data.country
                 document.getElementById('cityListing').innerHTML += res.data.city + ', ' + res.data.state
@@ -252,6 +267,19 @@ document.getElementById('payment').addEventListener('click', event => {
         })
 
 })
+document.getElementById('deleteConfirm').addEventListener('click', event => {
+    event.preventDefault();
+    axios.delete(`/api/posts/${postId}`, {
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+        .then(async res => {
+            console.log(res)
+            window.location = "/rentals"
+        })
+})
+
 function logout() {
 
     if (localStorage.getItem('token') == "null") {

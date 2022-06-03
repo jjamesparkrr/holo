@@ -143,16 +143,6 @@ router.get('/search', async (req, res) => {
 
 
 
-//DELETE A POST
-router.delete('/posts/:id', passport.authenticate('jwt'), async (req, res) => {
-  try {
-    let post = await Post.destroy({ where: { id: req.params.id }})
-    res.json({message: 'post deleted'})
-  } catch (error) {
-    res.json({ error })
-  }
-})
-
 
 
 //CREATE A POST
@@ -173,22 +163,7 @@ router.post('/posts', passport.authenticate('jwt'), async (req, res) => {
 
 
 
-// router.delete('/:id', async (req, res) => {
-//   try {
-//     const [affectedRows] = Post.destroy({
-//       where: {
-//         id: req.params.id,
-//       },
-//     });
 
-//     if (affectedRows > 0) {
-//       res.status(200).end();
-//     } else {
-//       res.status(404).end();
-//     }
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+
 
 module.exports = router;
